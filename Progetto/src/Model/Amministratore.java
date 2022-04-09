@@ -10,6 +10,7 @@ public class Amministratore extends Utente{
 	
 	public boolean verificaAmministratore(int codiceSegreto)
 	{
+		
 		if(this.codiceSegreto==codiceSegreto) return true;
 		return false;
 	}

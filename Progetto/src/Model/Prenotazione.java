@@ -1,6 +1,20 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Prenotazione {
+	
+	private static ArrayList<Prenotazione> anagrafica = null;
+	public static ArrayList<Prenotazione> getAnagrafica()
+	{
+		if(anagrafica == null)
+		{
+			anagrafica = new ArrayList<Prenotazione>();
+		}
+		
+		return anagrafica;
+	}
+	
 	private Utente persona;
 	private UtenteGenerico[] persone;
 	private int numeroPersone;

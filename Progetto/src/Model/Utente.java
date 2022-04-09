@@ -1,6 +1,22 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Utente {
+	
+	private static ArrayList<Utente> anagrafica = null;
+	public static ArrayList<Utente> getAnagrafica()
+	{
+		if(anagrafica == null)
+		{
+			anagrafica = new ArrayList<Utente>();
+		}
+		
+		return anagrafica;
+	}
+	
+	
+	
 	private String mail;
 	private String nome;
 	private String cognome;
