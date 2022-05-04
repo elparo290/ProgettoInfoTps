@@ -28,6 +28,7 @@ public class Evento {
 	private String dataEvento;
 	private double prezzo;
 	private int postiRimanenti;
+	private int numPrenotazioni;
 	private ArrayList<Prenotazione> prenotazioni = new ArrayList<Prenotazione>();
 	
 	public Evento(int personeMax, String dataEvento,double prezzo)
@@ -36,6 +37,7 @@ public class Evento {
 		this.setDataEvento(dataEvento);
 		this.postiRimanenti=personeMax;
 		this.prezzo=prezzo;
+		this.numPrenotazioni=0;
 	}
 	
 	public boolean aggiungiPrenotazione(Prenotazione prenotazione)
@@ -43,6 +45,8 @@ public class Evento {
 		if(postiRimanenti+prenotazione.getNumeroPersone()<=this.personeMax)
 		{
 			prenotazioni.add(prenotazione);
+			prenotazioni.get(prenotazioni.size()-1).setNumPrenotazione(numPrenotazioni);
+			numPrenotazioni++;
 			postiRimanenti-=prenotazione.getNumeroPersone();
 			return true;
 		}

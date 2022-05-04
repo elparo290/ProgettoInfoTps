@@ -1,5 +1,8 @@
 package Controller;
 
-public class GestisciEventi {
+import Model.Evento;
 
+public class GestisciEventi {
+	
+	
 }

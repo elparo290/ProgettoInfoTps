@@ -28,4 +28,41 @@ public class GestisciAmministatore {
 		}
 		return futuri;
 	}
+	
+	public boolean aggiungiEvento(Evento evento)
+	{
+		return Evento.getAnagrafica().add(evento);
+	}
+	
+	public int cercaEvento(Evento evento)
+	{
+		for(int i=0;i<Evento.getAnagrafica().size();i++)
+		{
+			if(Evento.getAnagrafica().equals(evento)) return i;
+		}
+		return -1;
+	}
+	
+	public boolean eliminaEvento(Evento evento)
+	{
+		if(cercaEvento(evento)==-1) return false;
+		Evento.getAnagrafica().remove(cercaEvento(evento));
+		return true;
+	}
+
+	public String stampaEvento(Evento evento)
+	{
+		return evento.toString();
+	}
+	
+	public String stampaEventi()
+	{
+		String tmp="";
+		for(int i=0;i<Evento.getAnagrafica().size();i++)
+		{
+			tmp+=Evento.getAnagrafica().get(i).toString();
+		}
+		return tmp;
+	}
+	
 }

@@ -18,12 +18,14 @@ public class Prenotazione {
 	private Utente persona;
 	private UtenteGenerico[] persone;
 	private int numeroPersone;
+	private int numPrenotazione;
 	
-	public Prenotazione(Utente persona,UtenteGenerico[] persone)
+	public Prenotazione(Utente persona,UtenteGenerico[] persone,int numPrenotazione)
 	{
 		this.setPersona(persona);
 		this.persone=persone;
 		this.setNumeroPersone(persone.length);
+		this.setNumPrenotazione(numPrenotazione);
 	}
 
 	public Utente getPersona() {
@@ -48,6 +50,14 @@ public class Prenotazione {
 
 	public void setPersone(UtenteGenerico[] persone) {
 		this.persone=persone;
+	}
+
+	public int getNumPrenotazione() {
+		return numPrenotazione;
+	}
+
+	public void setNumPrenotazione(int numPrenotazione) {
+		this.numPrenotazione = numPrenotazione;
 	}
 	
 }
