@@ -29,3 +29,4 @@ public class GestisciAmministatore {
 		return futuri;
 	}
 }
+mkgòsdlf
