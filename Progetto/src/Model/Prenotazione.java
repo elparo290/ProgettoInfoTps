@@ -24,7 +24,7 @@ public class Prenotazione {
 	{
 		this.setPersona(persona);
 		this.persone=persone;
-		this.setNumeroPersone(persone.length);
+		this.setNumeroPersone(persone.length+1);
 		this.setNumPrenotazione(numPrenotazione);
 	}
 

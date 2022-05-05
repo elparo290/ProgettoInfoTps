@@ -10,37 +10,37 @@ public class GestisciEventi {
 		
 	}
 	
-	public boolean aggiungiPrenotazione(Prenotazione prenotazione)
+	public boolean aggiungiPrenotazione(Evento evento,Prenotazione prenotazione)
 	{
-		return Prenotazione.getAnagrafica().add(prenotazione);
+		return evento.aggiungiPrenotazione(prenotazione);
 	}
 	
-	public int cercaPrenotazione(Prenotazione prenotazione)
+	public int cercaPrenotazione(Evento evento,Prenotazione prenotazione)
 	{
 		
-		for(int i=0;i<Prenotazione.getAnagrafica().size();i++)
-			if(Prenotazione.getAnagrafica().get(i).equals(prenotazione)) return i;
+		for(int i=0;i<evento.getPrenotazioni().size();i++)
+			if(evento.getPrenotazioni().get(i).equals(prenotazione)) return i;
 		return -1;
 	}
 	
-	public boolean eliminaPrenotazione(Prenotazione prenotazione)
+	public boolean eliminaPrenotazione(Evento evento,Prenotazione prenotazione)
 	{
-		if(cercaPrenotazione(prenotazione)==-1) return false;
-		Prenotazione.getAnagrafica().remove(cercaPrenotazione(prenotazione));
+		if(cercaPrenotazione(evento,prenotazione)==-1) return false;
+		evento.getPrenotazioni().remove(cercaPrenotazione(evento,prenotazione));
 		return true;
 	}
 	
-	public String stampaPrenotazione(Prenotazione prenotazione)
+	public String stampaPrenotazione(Evento evento,Prenotazione prenotazione)
 	{
-		if(cercaPrenotazione(prenotazione)==-1) return "nessuna prenotazione trovata";
-		return Prenotazione.getAnagrafica().get(cercaPrenotazione(prenotazione)).toString();
+		if(cercaPrenotazione(evento,prenotazione)==-1) return "nessuna prenotazione trovata";
+		return evento.getPrenotazioni().get(cercaPrenotazione(evento,prenotazione)).toString();
 	}
 	
-	public String stampaPrenotazione()
+	public String stampaPrenotazione(Evento evento)
 	{
 		String tmp="";
-		for(int i=0;i<Prenotazione.getAnagrafica().size();i++)
-			tmp+=Prenotazione.getAnagrafica().get(i).toString();
+		for(int i=0;i<evento.getPrenotazioni().size();i++)
+			tmp+=evento.getPrenotazioni().get(i).toString();
 		return tmp;
 	}
 	
