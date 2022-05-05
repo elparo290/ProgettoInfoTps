@@ -1,8 +1,13 @@
 package Controller;
-import Model.Amministratore;
+
 import Model.Evento;
 
 public class GestisciAmministatore {
+	
+	public GestisciAmministatore()
+	{
+		
+	}
 	
 	public Evento[] datiEventiInProgramma()
 	{
@@ -37,9 +42,7 @@ public class GestisciAmministatore {
 	public int cercaEvento(Evento evento)
 	{
 		for(int i=0;i<Evento.getAnagrafica().size();i++)
-		{
 			if(Evento.getAnagrafica().equals(evento)) return i;
-		}
 		return -1;
 	}
 	
@@ -52,16 +55,15 @@ public class GestisciAmministatore {
 
 	public String stampaEvento(Evento evento)
 	{
-		return evento.toString();
+		if(cercaEvento(evento)==-1) return "nessun evento trovato";
+		return Evento.getAnagrafica().get(cercaEvento(evento)).toString();
 	}
 	
 	public String stampaEventi()
 	{
 		String tmp="";
 		for(int i=0;i<Evento.getAnagrafica().size();i++)
-		{
 			tmp+=Evento.getAnagrafica().get(i).toString();
-		}
 		return tmp;
 	}
 	
