@@ -1,16 +1,8 @@
 package Controller;
 
-/**
- * Classe che serve per gestire gli eventi dell'amministratorevyvjhjhgjy
- */
-
 import Model.Evento;
 
 public class GestisciAmministatore {
-	
-	/**
-	 * ciao
-	 */
 	
 	public GestisciAmministatore()
 	{
@@ -20,11 +12,6 @@ public class GestisciAmministatore {
 	public Evento[] datiEventiInProgramma()
 	{
 		return (Evento[]) Evento.getAnagrafica().toArray();
-	}
-	
-	public Evento[] storicoEventi()
-	{
-		return (Evento[]) Evento.getStorico().toArray();
 	}
 	
 	public Evento[] prossimiEventi(String dataAttuale)

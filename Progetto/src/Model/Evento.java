@@ -2,18 +2,18 @@ package Model;
 
 import java.util.ArrayList;
 
+/**
+ * classe evento che serve per creare le prenotazioni
+ * la creazione può essere fatta solo da un'amministratore
+ */
+
 public class Evento {
 	private static ArrayList<Evento> storico = null;
-	public static ArrayList<Evento> getStorico()
-	{
-		if(storico == null)
-		{
-			storico = new ArrayList<Evento>();
-		}
-		
-		return storico;
-	}
 	private static ArrayList<Evento> anagrafica = null;
+	/**
+	 * Metodo che ritorna eventi
+	 * @return ArrayList degli eventi in programmazione
+	 */
 	public static ArrayList<Evento> getAnagrafica()
 	{
 		if(anagrafica == null)
@@ -31,6 +31,13 @@ public class Evento {
 	private int numPrenotazioni;
 	private ArrayList<Prenotazione> prenotazioni = new ArrayList<Prenotazione>();
 	
+	/**
+	 * Metodo per costruire un'evento
+	 * @param personeMax massimo di persone che posso entrare nell'evento
+	 * @param dataEvento data dell'evento in programmazione
+	 * @param prezzo prezzo a persona dell'evento
+	 */
+	
 	public Evento(int personeMax, String dataEvento,double prezzo)
 	{
 		this.personeMax=personeMax;
@@ -39,6 +46,12 @@ public class Evento {
 		this.prezzo=prezzo;
 		this.numPrenotazioni=0;
 	}
+	
+	/**
+	 * Metodo per l'aggiunta di una prenotazione all'evento
+	 * @param prenotazione prenotazione da aggiungere
+	 * @return vero se è stato aggiunto correttamente, falso se non è possibile aggiungere
+	 */
 	
 	public boolean aggiungiPrenotazione(Prenotazione prenotazione)
 	{
@@ -52,27 +65,12 @@ public class Evento {
 		}
 		return false;
 	}
-		
-	public int cercaPrenotazione(Prenotazione prenotazione)
-	{
-		if(prenotazioni.contains(prenotazione))
-		{
-			for(int i=0;i<prenotazioni.size();i++)
-			{
-				if(prenotazioni.get(i).equals(prenotazione))
-				{
-					return i;
-				}
-			}
-		}
-		return -1;
-	}
 	
-	public boolean isFuture(String data1, String data2)
-	{
-		return true;
-	}
-	
+	/**
+	 * 
+	 * @param prenotazione
+	 * @return vero se è stato eliminato correttamente, falso se non è stata trovata la prenotazione
+	 */
 	public boolean eliminaPrenotazione(Prenotazione prenotazione)
 	{
 		return prenotazioni.remove(prenotazione);

@@ -1,15 +1,15 @@
 package Model;
 
 /**
- * Questa classe contiene tutte le informazioni dell'amministratore
- * ossia quello che crea l'evento e ne gestisce tutti i casi
- *
+ * Classe amministratore, estende la classe;
+ * si differenzia dall'utente solo perchè 
+ * l'amministratore può anche gestire gli utenti
  */
 
 public class Amministratore extends Utente{
 	
 	/**
-	 * Classe che serve per costruire l'amministratore
+	 * Metodo per costruire l'amministratore
 	 * 
 	 * @param mail Mail amministratore
 	 * @param nome Nome amministratore

@@ -29,6 +29,13 @@ public class Prenotazione {
 	private int numPrenotazione;
 	private Evento evento;
 	
+	/**
+	 * Metodo per creare prenotazione
+	 * @param persona Utente registrato che ha prenotato 
+	 * @param persone Utenti non registrati che sono nella prenotazione
+	 * @param numPrenotazione numero della prenotazione 
+	 * @param evento evento a cui è affiliata la prenotazione
+	 */
 	public Prenotazione(Utente persona,UtenteGenerico[] persone,int numPrenotazione,Evento evento)
 	{
 		this.setPersona(persona);
