@@ -24,7 +24,6 @@ public class Prenotazione {
 	}
 	
 	private Utente persona;
-	private UtenteGenerico[] persone;
 	private int numeroPersone;
 	private int numPrenotazione;
 	private Evento evento;
@@ -36,11 +35,10 @@ public class Prenotazione {
 	 * @param numPrenotazione numero della prenotazione 
 	 * @param evento evento a cui è affiliata la prenotazione
 	 */
-	public Prenotazione(Utente persona,UtenteGenerico[] persone,int numPrenotazione,Evento evento)
+	public Prenotazione(Utente persona,int numPrenotazione,int numPersone,Evento evento)
 	{
 		this.setPersona(persona);
-		this.persone=persone;
-		this.setNumeroPersone(persone.length+1);
+		this.setNumeroPersone(numPersone);
 		this.setNumPrenotazione(numPrenotazione);
 		this.evento=evento;
 	}
@@ -59,14 +57,6 @@ public class Prenotazione {
 
 	public void setNumeroPersone(int numeroPersone) {
 		this.numeroPersone = numeroPersone;
-	}
-
-	public UtenteGenerico[] getPersone() {
-		return persone;
-	}
-
-	public void setPersone(UtenteGenerico[] persone) {
-		this.persone=persone;
 	}
 
 	public int getNumPrenotazione() {
