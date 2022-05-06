@@ -112,5 +112,10 @@ public class Registrati extends JPanel {
 		datePicker.setBounds(14, 208, 224, 21);
 		add(datePicker);
 		
+		JButton btnNewButton_1 = new JButton("ESCI");
+		btnNewButton_1.setBackground(Color.MAGENTA);
+		btnNewButton_1.setBounds(385, 11, 55, 23);
+		add(btnNewButton_1);
+		
 	}
 }
