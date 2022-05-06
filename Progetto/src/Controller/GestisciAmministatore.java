@@ -9,7 +9,7 @@ import Model.Evento;
 public class GestisciAmministatore {
 	
 	/**
-	 * 
+	 * ciao
 	 */
 	
 	public GestisciAmministatore()
