@@ -1,7 +1,7 @@
 package Controller;
 
 /**
- * Classe che serve per gestire gli eventi dell'amministratorevyvjhjh
+ * Classe che serve per gestire gli eventi dell'amministratorevyvjhjhgjy
  */
 
 import Model.Evento;
