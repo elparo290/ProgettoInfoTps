@@ -1,6 +1,9 @@
 package View;
 
 import javax.swing.JPanel;
+
+import Controller.Controller;
+
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -8,6 +11,8 @@ import javax.swing.JLabel;
 
 public class Pannello extends JPanel {
 
+	
+	JButton btnNewButton;
 	/**
 	 * Create the panel.
 	 */
@@ -15,7 +20,7 @@ public class Pannello extends JPanel {
 		setBackground(Color.MAGENTA);
 		setLayout(null);
 		
-		JButton btnNewButton = new JButton("INIZIAMO");
+		btnNewButton = new JButton("INIZIAMO");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnNewButton.setBounds(162, 194, 119, 21);
 		add(btnNewButton);
@@ -34,4 +39,12 @@ public class Pannello extends JPanel {
 
 	}
 
+	public JButton getInizia() {
+		return btnNewButton;
+	}
+	
+	public void addListeners(Controller c) {
+		btnNewButton.addActionListener(c);
+	}
+	
 }

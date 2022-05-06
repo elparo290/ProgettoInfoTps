@@ -2,6 +2,9 @@ package View;
 
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
+
+import Controller.Controller;
+
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -12,6 +15,9 @@ public class ViewPrenotEven extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	
+	JButton btnNewButton;
+	
 	public ViewPrenotEven() {
 		setBackground(Color.MAGENTA);
 		setLayout(null);
@@ -24,7 +30,7 @@ public class ViewPrenotEven extends JPanel {
 		txtpnNonCiSono.setBounds(10, 45, 657, 446);
 		add(txtpnNonCiSono);
 		
-		JButton btnNewButton = new JButton("ESCI");
+		btnNewButton = new JButton("ESCI");
 		btnNewButton.setBackground(Color.MAGENTA);
 		btnNewButton.setBounds(578, 11, 89, 23);
 		add(btnNewButton);
@@ -36,4 +42,13 @@ public class ViewPrenotEven extends JPanel {
 		add(lblNewLabel_1);
 
 	}
+	
+	public JButton getEsci() {
+		return btnNewButton;
+	}
+	
+	public void addListeners(Controller c) {
+		btnNewButton.addActionListener(c);
+	}
+	
 }

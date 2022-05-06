@@ -4,6 +4,9 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
+
+import Controller.Controller;
+
 import javax.swing.JSpinner;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -15,11 +18,15 @@ public class PrenotaEvento extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	
+	JButton btnNewButton;
+	JButton btnNewButton_1;
+	
 	public PrenotaEvento() {
 		setBackground(Color.MAGENTA);
 		setLayout(null);
 		
-		JButton btnNewButton = new JButton("ESCI");
+		btnNewButton = new JButton("ESCI");
 		btnNewButton.setBackground(Color.MAGENTA);
 		btnNewButton.setBounds(518, 11, 55, 23);
 		add(btnNewButton);
@@ -49,7 +56,7 @@ public class PrenotaEvento extends JPanel {
 		lblNewLabel_2.setBounds(10, 182, 252, 14);
 		add(lblNewLabel_2);
 		
-		JButton btnNewButton_1 = new JButton("INVIA");
+		btnNewButton_1 = new JButton("INVIA");
 		btnNewButton_1.setBackground(Color.MAGENTA);
 		btnNewButton_1.setBounds(132, 284, 89, 23);
 		add(btnNewButton_1);
@@ -59,4 +66,18 @@ public class PrenotaEvento extends JPanel {
 		add(comboBox);
 
 	}
+	
+	public JButton getEsci() {
+		return btnNewButton;
+	}
+	
+	public JButton getInvia() {
+		return btnNewButton_1;
+	}
+	
+	public void addListeners(Controller c) {
+		btnNewButton.addActionListener(c);
+		btnNewButton_1.addActionListener(c);
+	}
+	
 }

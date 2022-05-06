@@ -12,6 +12,8 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
+import Controller.Controller;
+
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
@@ -26,6 +28,10 @@ public class Registrati extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	
+	JButton btnNewButton;
+	JButton btnNewButton_1;
+	
 	public Registrati() {
 		setBackground(Color.MAGENTA);
 		setLayout(null);
@@ -79,7 +85,7 @@ public class Registrati extends JPanel {
 		passwordField.setBounds(296, 167, 144, 20);
 		add(passwordField);
 		
-		JButton btnNewButton = new JButton("INVIA");
+		btnNewButton = new JButton("INVIA");
 		btnNewButton.setBounds(183, 266, 89, 23);
 		add(btnNewButton);
 		
@@ -112,10 +118,24 @@ public class Registrati extends JPanel {
 		datePicker.setBounds(14, 208, 224, 21);
 		add(datePicker);
 		
-		JButton btnNewButton_1 = new JButton("ESCI");
+		btnNewButton_1 = new JButton("ESCI");
 		btnNewButton_1.setBackground(Color.MAGENTA);
 		btnNewButton_1.setBounds(385, 11, 55, 23);
 		add(btnNewButton_1);
 		
 	}
+	
+	public JButton getInvia() {
+		return btnNewButton;
+	}
+	
+	public JButton getEsci() {
+		return btnNewButton_1;
+	}
+	
+	public void addListeners(Controller c) {
+		btnNewButton.addActionListener(c);
+		btnNewButton_1.addActionListener(c);
+	}
+	
 }

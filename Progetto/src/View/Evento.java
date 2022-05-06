@@ -6,6 +6,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+
+import Controller.Controller;
+
 import javax.swing.JComboBox;
 import javax.swing.JSpinner;
 
@@ -15,11 +18,15 @@ public class Evento extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	
+	JButton btnNewButton;
+	JButton btnNewButton_1;
+	
 	public Evento() {
 		setBackground(Color.MAGENTA);
 		setLayout(null);
 		
-		JButton btnNewButton = new JButton("ESCI");
+		btnNewButton = new JButton("ESCI");
 		btnNewButton.setBackground(Color.MAGENTA);
 		btnNewButton.setBounds(385, 11, 55, 23);
 		add(btnNewButton);
@@ -58,7 +65,7 @@ public class Evento extends JPanel {
 		spinner.setBounds(72, 205, 76, 20);
 		add(spinner);
 		
-		JButton btnNewButton_1 = new JButton("INVIA");
+		btnNewButton_1 = new JButton("INVIA");
 		btnNewButton_1.setBackground(Color.MAGENTA);
 		btnNewButton_1.setBounds(171, 249, 89, 23);
 		add(btnNewButton_1);
@@ -70,4 +77,18 @@ public class Evento extends JPanel {
 		add(lblNewLabel_1);
 
 	}
+	
+	public JButton getEsci() {
+		return btnNewButton;
+	}
+	
+	public JButton getInvia() {
+		return btnNewButton_1;
+	}
+	
+	public void addListeners(Controller c) {
+		btnNewButton.addActionListener(c);
+		btnNewButton_1.addActionListener(c);
+	}
+	
 }

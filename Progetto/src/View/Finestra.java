@@ -15,7 +15,7 @@ public class Finestra extends JFrame {
 	public Finestra() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 433);
-		contentPane = new Home();
+		contentPane = new Pannello();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
@@ -25,18 +25,165 @@ public class Finestra extends JFrame {
 	public JPanel getContentPane() {
 		return contentPane;
 	}
-
-	public void setContentPane(JPanel pannello) {
-		this.contentPane=pannello;
+	
+	public Pannello getPannello() {
+		return (Pannello) contentPane;
 	}
-
-	public Home getContentPaneHome() {
+	
+	public Accedi getAccedi() {
+		return (Accedi) contentPane;
+	}
+	
+	public CreaEvento getCreaEvento() {
+		return (CreaEvento) contentPane;
+	}
+	
+	public Evento getEvento() {
+		return (Evento) contentPane;
+	}
+	
+	public Home getHome() {
 		return (Home) contentPane;
+	}
+	
+	public PrenotaEvento getPrenotaEvento() {
+		return (PrenotaEvento) contentPane;
+	}
+	
+	public Prenotazioni getPrenotazioni() {
+		return (Prenotazioni) contentPane;
+	}
+	
+	public Registrati getRegistrati() {
+		return (Registrati) contentPane;
+	}
+	
+	public Scelta getScelta() {
+		return (Scelta) contentPane;
+	}
+	
+	public ViewPrenotEven getViewPrenotEven() {
+		return (ViewPrenotEven) contentPane;
 	}
 	
 	public void setAccedi()
 	{
-		setContentPane(new Accedi());
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 433);
+		contentPane = new Accedi();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		this.setVisible(true);
+	
+	}
+	
+	public void setCreaEvento()
+	{
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 433);
+		contentPane = new CreaEvento();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		this.setVisible(true);
+	
+	}
+	
+	public void setEvento()
+	{
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 433);
+		contentPane = new Evento();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		this.setVisible(true);
+	
+	}
+	
+	public void setHome()
+	{
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 433);
+		contentPane = new Home();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		this.setVisible(true);
+	
+	}
+	
+	public void setPannello()
+	{
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 433);
+		contentPane = new Pannello();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		this.setVisible(true);
+	
+	}
+	
+	public void setPrenotaEvento()
+	{
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 433);
+		contentPane = new PrenotaEvento();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		this.setVisible(true);
+	
+	}
+	
+	public void setPrenotazioni()
+	{
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 433);
+		contentPane = new Prenotazioni();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		this.setVisible(true);
+	
+	}
+	
+	public void setRegistrati()
+	{
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 433);
+		contentPane = new Registrati();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		this.setVisible(true);
+	
+	}
+	
+	public void setScelta()
+	{
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 433);
+		contentPane = new Scelta();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		this.setVisible(true);
+	
+	}
+	
+	public void setViewPrenotEven()
+	{
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 433);
+		contentPane = new ViewPrenotEven();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		this.setVisible(true);
+	
 	}
 	
 }
