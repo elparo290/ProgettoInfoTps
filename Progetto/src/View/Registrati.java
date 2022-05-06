@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.util.Properties;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 
 public class Registrati {
 
@@ -79,10 +80,6 @@ public class Registrati {
 		frame.getContentPane().add(textField_4);
 		textField_4.setColumns(10);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Amministratore");
-		rdbtnNewRadioButton.setBounds(171, 151, 103, 21);
-		frame.getContentPane().add(rdbtnNewRadioButton);
-		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(171, 103, 96, 19);
 		frame.getContentPane().add(passwordField);
@@ -117,14 +114,9 @@ public class Registrati {
 		lblPassword.setBounds(171, 88, 96, 17);
 		frame.getContentPane().add(lblPassword);
 		
-		JLabel lblNewLabel_6 = new JLabel("nome");
-		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNewLabel_6.setBounds(171, 135, 96, 17);
-		frame.getContentPane().add(lblNewLabel_6);
-		
 		UtilDateModel model = new UtilDateModel();
 		Properties p = new Properties();
-		p.put("text.today", "Giorno");
+		p.put("text.today", "Oggi");
 		p.put("text.month", "Mese");
 		p.put("text.year", "Anno");
 		JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
@@ -137,7 +129,12 @@ public class Registrati {
 		JButton btnNewButton = new JButton("Invia");
 		btnNewButton.setBounds(281, 208, 85, 21);
 		frame.getContentPane().add(btnNewButton);
-		frame.setBounds(100, 100, 450, 300);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Amministratore");
+		chckbxNewCheckBox.setBackground(Color.MAGENTA);
+		chckbxNewCheckBox.setBounds(171, 151, 171, 21);
+		frame.getContentPane().add(chckbxNewCheckBox);
+		frame.setBounds(100, 100, 502, 345);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
