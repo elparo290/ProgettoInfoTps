@@ -1,8 +1,16 @@
 package Controller;
 
+/**
+ * Classe che serve per gestire gli eventi dell'amministratore
+ */
+
 import Model.Evento;
 
 public class GestisciAmministatore {
+	
+	/**
+	 * 
+	 */
 	
 	public GestisciAmministatore()
 	{

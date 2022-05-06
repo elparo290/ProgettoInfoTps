@@ -1,9 +1,7 @@
 package Model;
 
 /**
- * Classe di un utente generico che non si deve registrere 
- * @author Parovel
- * @author Di gati
+ * Classe di un utente generico che si vuole registrare
  * @version 1.0
  * 
  */
@@ -15,7 +13,6 @@ public class UtenteGenerico {
 
 	/**
 	 * Metodo per creare l'utente generico.
-	 * il numeor di telefono non viene passato perchè glielo assegno io
 	 * @param nome nome utente generico
 	 * @param cognome cognome utente generico
 	 * @param telefono telefono utente generico
@@ -27,11 +24,6 @@ public class UtenteGenerico {
 		this.setCognome(cognome);
 		this.setTelefono(telefono);
 	}
-
-	/**
-	 * 
-	 * @return Ritorna il nome dell'utente generico
-	 */
 	
 	public String getNome() {
 		return nome;
