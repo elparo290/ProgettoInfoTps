@@ -20,7 +20,7 @@ import java.util.Properties;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 
-public class Registrati {
+public class Registrati2 {
 
 	private JFrame frame;
 	private JTextField textField;
@@ -36,7 +36,7 @@ public class Registrati {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Registrati window = new Registrati();
+					Registrati2 window = new Registrati2();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,7 +48,7 @@ public class Registrati {
 	/**
 	 * Create the application.
 	 */
-	public Registrati() {
+	public Registrati2() {
 		initialize();
 	}
 
