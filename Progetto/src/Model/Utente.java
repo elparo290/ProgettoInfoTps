@@ -2,26 +2,42 @@ package Model;
 
 import java.util.ArrayList;
 
+/**
+ * Classe dell'utente che deve essere registrato o può accedere
+ * e può creare le prenotazioni per gli eventi
+ */
+
 public class Utente {
 	
-	private static ArrayList<Utente> anagrafica = null;
+	public static ArrayList<Utente> anagrafica = null;
+	
+	/**
+	 * Metodo che ritorno tutti gli utenti registrati
+	 * @return ArrayList di tutti gli utenti registrati
+	 */
 	public static ArrayList<Utente> getAnagrafica()
 	{
 		if(anagrafica == null)
 		{
 			anagrafica = new ArrayList<Utente>();
 		}
-		
 		return anagrafica;
 	}
-	
-	
 	
 	private String mail;
 	private String nome;
 	private String cognome;
 	private String telefono;
 	private String dataDiNascita;
+	
+	/**
+	 * Metodo costruttore dell'utente
+	 * @param mail mail dell'utente
+	 * @param nome nome dell'utente
+	 * @param cognome cognome dell'utente
+	 * @param telefono telefono dell'utente
+	 * @param dataDiNascita data di nascita dell'utente
+	 */
 	
 	public Utente(String mail,String nome,String cognome,String telefono,String dataDiNascita)
 	{
@@ -30,6 +46,10 @@ public class Utente {
 		this.setCognome(cognome);
 		this.setTelefono(telefono);
 		this.setDataDiNascita(dataDiNascita);
+		if(anagrafica == null)
+		{
+			anagrafica = new ArrayList<Utente>();
+		}
 	}
 
 	public String getMail() {

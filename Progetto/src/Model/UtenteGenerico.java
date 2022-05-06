@@ -1,9 +1,8 @@
 package Model;
 
 /**
- * Classe di un utente generico che si vuole registrare
- * @version 1.0
- * 
+ * Classe di un utente generico che non ha bisogno di registrazione
+ * nominativo delle persone che entrano con l'utente registrato
  */
 
 public class UtenteGenerico {

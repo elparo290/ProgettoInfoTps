@@ -2,9 +2,17 @@ package Model;
 
 import java.util.ArrayList;
 
+/**
+ * Classe prenotazione che serve per creare le prenotazioni
+ */
+
 public class Prenotazione {
 	
 	private static ArrayList<Prenotazione> anagrafica = null;
+	/**
+	 * Metodo che ritorna tutte le prenotazioni salvate
+	 * @return ArrayList delle prenotazioni
+	 */
 	public static ArrayList<Prenotazione> getAnagrafica()
 	{
 		if(anagrafica == null)
@@ -19,13 +27,15 @@ public class Prenotazione {
 	private UtenteGenerico[] persone;
 	private int numeroPersone;
 	private int numPrenotazione;
+	private Evento evento;
 	
-	public Prenotazione(Utente persona,UtenteGenerico[] persone,int numPrenotazione)
+	public Prenotazione(Utente persona,UtenteGenerico[] persone,int numPrenotazione,Evento evento)
 	{
 		this.setPersona(persona);
 		this.persone=persone;
 		this.setNumeroPersone(persone.length+1);
 		this.setNumPrenotazione(numPrenotazione);
+		this.evento=evento;
 	}
 
 	public Utente getPersona() {
