@@ -9,12 +9,15 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextPane;
-
-import org.jdatepicker.DatePicker;
 import org.jdatepicker.JDatePicker;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.util.Properties;
+import javax.swing.JButton;
 
 public class Registrati {
 
@@ -76,7 +79,7 @@ public class Registrati {
 		frame.getContentPane().add(textField_4);
 		textField_4.setColumns(10);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("New radio button");
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("Amministratore");
 		rdbtnNewRadioButton.setBounds(171, 151, 103, 21);
 		frame.getContentPane().add(rdbtnNewRadioButton);
 		
@@ -119,12 +122,21 @@ public class Registrati {
 		lblNewLabel_6.setBounds(171, 135, 96, 17);
 		frame.getContentPane().add(lblNewLabel_6);
 		
-		DatePicker picker = new JDatePicker();
-        picker.setTextEditable(true);
-        picker.setShowYearButtons(true);
-        jPanel.add((JComponent) picker);
-		lblNewLabel_1.setBounds(29, 208, 96, 13);
-		frame.getContentPane().add(lblNewLabel_1);
+		UtilDateModel model = new UtilDateModel();
+		Properties p = new Properties();
+		p.put("text.today", "Giorno");
+		p.put("text.month", "Mese");
+		p.put("text.year", "Anno");
+		JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
+		JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+        datePicker.setTextEditable(true);
+        datePicker.setShowYearButtons(true);
+		datePicker.setBounds(29, 208, 224, 21);
+		frame.getContentPane().add(datePicker);
+		
+		JButton btnNewButton = new JButton("Invia");
+		btnNewButton.setBounds(281, 208, 85, 21);
+		frame.getContentPane().add(btnNewButton);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
