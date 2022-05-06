@@ -16,11 +16,12 @@ public class Amministratore extends Utente{
 	 * @param cognome Cognome amministratore
 	 * @param telefono Telefono amministratore
 	 * @param dataDiNascita Data di nascita amministratore
+	 * @param password password amministratore
 	 */
 	
-	public Amministratore(String mail,String nome,String cognome,String telefono,String dataDiNascita)
+	public Amministratore(String mail,String nome,String cognome,String telefono,String dataDiNascita,String password)
 	{
-		super(mail,nome,cognome,telefono,dataDiNascita);
+		super(mail,nome,cognome,telefono,dataDiNascita,password);
 	}
 	
 }

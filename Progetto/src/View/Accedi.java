@@ -62,11 +62,21 @@ public class Accedi extends JPanel {
 
 	}
 	
+	public JTextField getMail()
+	{
+		return textField;
+	}
+	
+	public JPasswordField getPassword()
+	{
+		return passwordField;
+	}
+	
 	public JButton getAccedi() {
 		return btnNewButton;
 	}
 	
-	public JButton getRegistrati() {
+	public JButton getEsci() {
 		return btnNewButton_1;
 	}
 	

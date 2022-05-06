@@ -23,6 +23,7 @@ public class Registrati extends JPanel {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private JRadioButton rdbtnNewRadioButton;
 	private JPasswordField passwordField;
 
 	/**
@@ -89,7 +90,7 @@ public class Registrati extends JPanel {
 		btnNewButton.setBounds(183, 266, 89, 23);
 		add(btnNewButton);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Amministratore");
+		rdbtnNewRadioButton = new JRadioButton("Amministratore");
 		rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		rdbtnNewRadioButton.setBackground(Color.MAGENTA);
 		rdbtnNewRadioButton.setBounds(317, 194, 123, 23);
@@ -125,6 +126,36 @@ public class Registrati extends JPanel {
 		
 	}
 	
+	public JTextField getNome()
+	{
+		return textField;
+	}
+	
+	public JTextField getCognome()
+	{
+		return textField_1;
+	}
+	
+	public JTextField getTelefono()
+	{
+		return textField_2;
+	}
+	
+	public JTextField getMail()
+	{
+		return textField_3;
+	}
+	
+	public JPasswordField getPassword()
+	{
+		return passwordField;
+	}
+	
+	public JRadioButton getAmministratore()
+	{
+		return rdbtnNewRadioButton;
+	}
+	
 	public JButton getInvia() {
 		return btnNewButton;
 	}
@@ -136,6 +167,7 @@ public class Registrati extends JPanel {
 	public void addListeners(Controller c) {
 		btnNewButton.addActionListener(c);
 		btnNewButton_1.addActionListener(c);
+		rdbtnNewRadioButton.addActionListener(c);
 	}
 	
 }

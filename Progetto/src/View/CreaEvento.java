@@ -1,15 +1,19 @@
 package View;
 
 import javax.swing.JPanel;
-
-import Controller.Controller;
-
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.JTextField;
+
+import Controller.Controller;
+
+import javax.swing.JComboBox;
+import javax.swing.JSpinner;
 
 public class CreaEvento extends JPanel {
+	private JTextField textField;
 
 	/**
 	 * Create the panel.
@@ -17,7 +21,6 @@ public class CreaEvento extends JPanel {
 	
 	JButton btnNewButton;
 	JButton btnNewButton_1;
-	JButton btnNewButton_2;
 	
 	public CreaEvento() {
 		setBackground(Color.MAGENTA);
@@ -28,40 +31,64 @@ public class CreaEvento extends JPanel {
 		btnNewButton.setBounds(385, 11, 55, 23);
 		add(btnNewButton);
 		
-		btnNewButton_1 = new JButton("CREA EVENTO");
-		btnNewButton_1.setBackground(Color.MAGENTA);
-		btnNewButton_1.setBounds(68, 184, 106, 23);
-		add(btnNewButton_1);
+		JLabel lblNewLabel = new JLabel("NOME EVENTO");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setBounds(58, 96, 111, 14);
+		add(lblNewLabel);
 		
-		btnNewButton_2 = new JButton("MOSTRA EVENTI");
-		btnNewButton_2.setBackground(Color.MAGENTA);
-		btnNewButton_2.setBounds(246, 184, 112, 23);
-		add(btnNewButton_2);
+		textField = new JTextField();
+		textField.setBounds(57, 121, 112, 20);
+		add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblDataEvento = new JLabel("DATA EVENTO");
+		lblDataEvento.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblDataEvento.setBounds(289, 98, 111, 14);
+		add(lblDataEvento);
+		
+		JLabel lblCapienzaPersone = new JLabel("CAPIENZA ");
+		lblCapienzaPersone.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblCapienzaPersone.setBounds(72, 179, 111, 14);
+		add(lblCapienzaPersone);
+		
+		JLabel lblPrezzo = new JLabel("PREZZO");
+		lblPrezzo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblPrezzo.setBounds(307, 179, 111, 14);
+		add(lblPrezzo);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(289, 204, 101, 22);
+		add(comboBox);
+		
+		JSpinner spinner = new JSpinner();
+		spinner.setBackground(Color.MAGENTA);
+		spinner.setBounds(72, 205, 76, 20);
+		add(spinner);
+		
+		btnNewButton_1 = new JButton("INVIA");
+		btnNewButton_1.setBackground(Color.MAGENTA);
+		btnNewButton_1.setBounds(171, 249, 89, 23);
+		add(btnNewButton_1);
 		
 		JLabel lblNewLabel_1 = new JLabel("PAROGATI DISCO");
 		lblNewLabel_1.setForeground(Color.CYAN);
 		lblNewLabel_1.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_1.setBounds(101, 15, 257, 45);
+		lblNewLabel_1.setBounds(99, 15, 257, 45);
 		add(lblNewLabel_1);
 
 	}
-
+	
 	public JButton getEsci() {
 		return btnNewButton;
 	}
 	
-	public JButton getCreaEvento() {
+	public JButton getInvia() {
 		return btnNewButton_1;
-	}
-	
-	public JButton getMostraEventi() {
-		return btnNewButton_2;
 	}
 	
 	public void addListeners(Controller c) {
 		btnNewButton.addActionListener(c);
 		btnNewButton_1.addActionListener(c);
-		btnNewButton_2.addActionListener(c);
 	}
 	
 }

@@ -34,12 +34,12 @@ public class Finestra extends JFrame {
 		return (Accedi) contentPane;
 	}
 	
-	public CreaEvento getCreaEvento() {
-		return (CreaEvento) contentPane;
+	public Eventi getCreaEvento() {
+		return (Eventi) contentPane;
 	}
 	
-	public Evento getEvento() {
-		return (Evento) contentPane;
+	public CreaEvento getEvento() {
+		return (CreaEvento) contentPane;
 	}
 	
 	public Home getHome() {
@@ -82,7 +82,7 @@ public class Finestra extends JFrame {
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 433);
-		contentPane = new CreaEvento();
+		contentPane = new Eventi();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
@@ -94,7 +94,7 @@ public class Finestra extends JFrame {
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 433);
-		contentPane = new Evento();
+		contentPane = new CreaEvento();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);

@@ -29,6 +29,7 @@ public class Utente {
 	private String cognome;
 	private String telefono;
 	private String dataDiNascita;
+	private String password;
 	
 	/**
 	 * Metodo costruttore dell'utente
@@ -37,15 +38,17 @@ public class Utente {
 	 * @param cognome cognome dell'utente
 	 * @param telefono telefono dell'utente
 	 * @param dataDiNascita data di nascita dell'utente
+	 * @param password password dell'utente
 	 */
 	
-	public Utente(String mail,String nome,String cognome,String telefono,String dataDiNascita)
+	public Utente(String mail,String nome,String cognome,String telefono,String dataDiNascita,String password)
 	{
 		this.setMail(mail);
 		this.setNome(nome);
 		this.setCognome(cognome);
 		this.setTelefono(telefono);
 		this.setDataDiNascita(dataDiNascita);
+		this.setPassword(password);
 		if(anagrafica == null)
 		{
 			anagrafica = new ArrayList<Utente>();
@@ -95,6 +98,14 @@ public class Utente {
 	@Override
 	public String toString() {
 		return ""+mail+"  "+nome+"  "+cognome+"  "+telefono+"  "+dataDiNascita;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }
