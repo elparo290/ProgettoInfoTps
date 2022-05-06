@@ -49,6 +49,11 @@ public class Accedi extends JPanel {
 		lblNewLabel_2.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 25));
 		lblNewLabel_2.setBounds(124, 63, 241, 38);
 		add(lblNewLabel_2);
+		
+		JButton btnNewButton_1 = new JButton("ESCI");
+		btnNewButton_1.setBackground(Color.MAGENTA);
+		btnNewButton_1.setBounds(385, 11, 55, 23);
+		add(btnNewButton_1);
 
 	}
 }
