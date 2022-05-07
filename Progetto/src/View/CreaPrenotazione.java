@@ -12,8 +12,7 @@ import Controller.Controller;
 import javax.swing.JComboBox;
 import javax.swing.JSpinner;
 
-public class CreaEvento extends JPanel {
-	private JTextField textField;
+public class CreaPrenotazione extends JPanel {
 
 	/**
 	 * Create the panel.
@@ -21,10 +20,10 @@ public class CreaEvento extends JPanel {
 	
 	JButton btnNewButton;
 	JButton btnNewButton_1;
-	JSpinner spinner_1;
 	JSpinner spinner;
+	JComboBox comboBox;
 	
-	public CreaEvento() {
+	public CreaPrenotazione() {
 		setBackground(Color.MAGENTA);
 		setLayout(null);
 		
@@ -33,34 +32,23 @@ public class CreaEvento extends JPanel {
 		btnNewButton.setBounds(385, 11, 55, 23);
 		add(btnNewButton);
 		
-		JLabel lblNewLabel = new JLabel("NOME EVENTO");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel.setBounds(58, 96, 111, 14);
-		add(lblNewLabel);
-		
-		textField = new JTextField();
-		textField.setBounds(57, 121, 112, 20);
-		add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblDataEvento = new JLabel("DATA EVENTO");
-		lblDataEvento.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblDataEvento.setBounds(289, 98, 111, 14);
-		add(lblDataEvento);
-		
-		JLabel lblCapienzaPersone = new JLabel("CAPIENZA ");
+		JLabel lblCapienzaPersone = new JLabel("Numero persone");
 		lblCapienzaPersone.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblCapienzaPersone.setBounds(72, 179, 111, 14);
+		lblCapienzaPersone.setBounds(34, 110, 168, 14);
 		add(lblCapienzaPersone);
 		
-		JLabel lblPrezzo = new JLabel("PREZZO");
+		JLabel lblPrezzo = new JLabel("Evento");
 		lblPrezzo.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblPrezzo.setBounds(307, 179, 111, 14);
+		lblPrezzo.setBounds(239, 110, 111, 14);
 		add(lblPrezzo);
+		
+		comboBox = new JComboBox();
+		comboBox.setBounds(239, 132, 101, 22);
+		add(comboBox);
 		
 		spinner = new JSpinner();
 		spinner.setBackground(Color.MAGENTA);
-		spinner.setBounds(72, 205, 76, 20);
+		spinner.setBounds(44, 134, 76, 20);
 		add(spinner);
 		
 		btnNewButton_1 = new JButton("INVIA");
@@ -73,10 +61,6 @@ public class CreaEvento extends JPanel {
 		lblNewLabel_1.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 25));
 		lblNewLabel_1.setBounds(99, 15, 257, 45);
 		add(lblNewLabel_1);
-		
-		spinner_1 = new JSpinner();
-		spinner_1.setBounds(300, 203, 89, 20);
-		add(spinner_1);
 
 	}
 	
@@ -88,20 +72,17 @@ public class CreaEvento extends JPanel {
 		return btnNewButton_1;
 	}
 	
-	public JSpinner getPersoneMax() {
+	public JSpinner getNumPersone() {
 		return spinner;
 	}
 	
-	public JSpinner getPrezzo() {
-		return spinner_1;
-	}
-	
-	public JTextField getNomeEvento() {
-		return textField;
+	public JComboBox getEvento() {
+		return comboBox;
 	}
 	
 	public void addListeners(Controller c) {
 		btnNewButton.addActionListener(c);
 		btnNewButton_1.addActionListener(c);
 	}
+	
 }

@@ -34,12 +34,12 @@ public class Finestra extends JFrame {
 		return (Accedi) contentPane;
 	}
 	
-	public Eventi getCreaEvento() {
-		return (Eventi) contentPane;
+	public CreaEvento getCreaEvento() {
+		return (CreaEvento) contentPane;
 	}
 	
-	public CreaEvento getEvento() {
-		return (CreaEvento) contentPane;
+	public Eventi getEventi() {
+		return (Eventi) contentPane;
 	}
 	
 	public Home getHome() {
@@ -66,6 +66,10 @@ public class Finestra extends JFrame {
 		return (ViewPrenotEven) contentPane;
 	}
 	
+	public CreaPrenotazione getCreaPrenotazione() {
+		return (CreaPrenotazione) contentPane;
+	}
+	
 	public void setAccedi()
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,7 +86,7 @@ public class Finestra extends JFrame {
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 433);
-		contentPane = new Eventi();
+		contentPane = new CreaEvento();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
@@ -90,11 +94,11 @@ public class Finestra extends JFrame {
 	
 	}
 	
-	public void setEvento()
+	public void setEventi()
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 433);
-		contentPane = new CreaEvento();
+		contentPane = new Eventi();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
@@ -179,6 +183,18 @@ public class Finestra extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 433);
 		contentPane = new ViewPrenotEven();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		this.setVisible(true);
+	
+	}
+	
+	public void setCreaPrenotazione()
+	{
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 433);
+		contentPane = new CreaPrenotazione();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);

@@ -40,7 +40,7 @@ public class Prenotazione {
 		this.setPersona(persona);
 		this.setNumeroPersone(numPersone);
 		this.setNumPrenotazione(numPrenotazione);
-		this.evento=evento;
+		this.setEvento(evento);
 	}
 
 	public Utente getPersona() {
@@ -65,6 +65,14 @@ public class Prenotazione {
 
 	public void setNumPrenotazione(int numPrenotazione) {
 		this.numPrenotazione = numPrenotazione;
+	}
+
+	public Evento getEvento() {
+		return evento;
+	}
+
+	public void setEvento(Evento evento) {
+		this.evento = evento;
 	}
 	
 }
