@@ -35,7 +35,7 @@ public class Prenotazioni extends JPanel {
 		
 		btnNewButton_2 = new JButton("ESCI");
 		btnNewButton_2.setBackground(Color.MAGENTA);
-		btnNewButton_2.setBounds(385, 11, 55, 23);
+		btnNewButton_2.setBounds(337, 10, 129, 23);
 		add(btnNewButton_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("PAROGATI DISCO");

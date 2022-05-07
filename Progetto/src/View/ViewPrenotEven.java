@@ -27,18 +27,18 @@ public class ViewPrenotEven extends JPanel {
 		txtpnNonCiSono.setText("Non c'\u00E8 nulla da vedere");
 		txtpnNonCiSono.setEditable(false);
 		txtpnNonCiSono.setBackground(Color.WHITE);
-		txtpnNonCiSono.setBounds(10, 45, 657, 446);
+		txtpnNonCiSono.setBounds(10, 49, 545, 424);
 		add(txtpnNonCiSono);
 		
 		btnNewButton = new JButton("ESCI");
 		btnNewButton.setBackground(Color.MAGENTA);
-		btnNewButton.setBounds(578, 11, 89, 23);
+		btnNewButton.setBounds(351, 10, 89, 23);
 		add(btnNewButton);
 		
 		JLabel lblNewLabel_1 = new JLabel("PAROGATI DISCO");
 		lblNewLabel_1.setForeground(Color.CYAN);
 		lblNewLabel_1.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_1.setBounds(236, 0, 257, 45);
+		lblNewLabel_1.setBounds(0, 10, 257, 45);
 		add(lblNewLabel_1);
 
 	}

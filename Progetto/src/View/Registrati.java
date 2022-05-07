@@ -121,7 +121,7 @@ public class Registrati extends JPanel {
 		
 		btnNewButton_1 = new JButton("ESCI");
 		btnNewButton_1.setBackground(Color.MAGENTA);
-		btnNewButton_1.setBounds(385, 11, 55, 23);
+		btnNewButton_1.setBounds(335, 10, 135, 23);
 		add(btnNewButton_1);
 		
 	}
