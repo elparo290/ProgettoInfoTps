@@ -42,7 +42,7 @@ public class Prenotazione {
 		this.setNumPrenotazione(numPrenotazione);
 		this.setEvento(evento);
 	}
-
+	
 	public Utente getPersona() {
 		return persona;
 	}

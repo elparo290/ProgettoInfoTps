@@ -55,9 +55,9 @@ public class Accedi extends JPanel {
 		lblNewLabel_2.setBounds(124, 63, 241, 38);
 		add(lblNewLabel_2);
 		
-		btnNewButton_1 = new JButton("ESCI");
+		btnNewButton_1 = new JButton("Indietro");
 		btnNewButton_1.setBackground(Color.MAGENTA);
-		btnNewButton_1.setBounds(351, 10, 89, 19);
+		btnNewButton_1.setBounds(326, 10, 114, 19);
 		add(btnNewButton_1);
 
 	}

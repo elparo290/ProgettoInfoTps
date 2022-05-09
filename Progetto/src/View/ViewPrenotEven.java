@@ -17,22 +17,22 @@ public class ViewPrenotEven extends JPanel {
 	 */
 	
 	JButton btnNewButton;
+	JTextPane txtpnNonCiSono;
 	
 	public ViewPrenotEven() {
 		setBackground(Color.MAGENTA);
 		setLayout(null);
 		
-		JTextPane txtpnNonCiSono = new JTextPane();
+		txtpnNonCiSono = new JTextPane();
 		txtpnNonCiSono.setFont(new Font("Tahoma", Font.ITALIC, 20));
-		txtpnNonCiSono.setText("Non c'\u00E8 nulla da vedere");
 		txtpnNonCiSono.setEditable(false);
 		txtpnNonCiSono.setBackground(Color.WHITE);
 		txtpnNonCiSono.setBounds(10, 49, 545, 424);
 		add(txtpnNonCiSono);
 		
-		btnNewButton = new JButton("ESCI");
+		btnNewButton = new JButton("Indietro");
 		btnNewButton.setBackground(Color.MAGENTA);
-		btnNewButton.setBounds(351, 10, 89, 23);
+		btnNewButton.setBounds(267, 10, 173, 23);
 		add(btnNewButton);
 		
 		JLabel lblNewLabel_1 = new JLabel("PAROGATI DISCO");
@@ -41,6 +41,11 @@ public class ViewPrenotEven extends JPanel {
 		lblNewLabel_1.setBounds(0, 10, 257, 45);
 		add(lblNewLabel_1);
 
+	}
+	
+	public void setText(String testo)
+	{
+		txtpnNonCiSono.setText(testo);
 	}
 	
 	public JButton getEsci() {

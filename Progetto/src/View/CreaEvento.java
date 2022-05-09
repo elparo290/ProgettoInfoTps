@@ -5,7 +5,13 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.util.Properties;
+
 import javax.swing.JTextField;
+
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
 
 import Controller.Controller;
 
@@ -23,14 +29,15 @@ public class CreaEvento extends JPanel {
 	JButton btnNewButton_1;
 	JSpinner spinner_1;
 	JSpinner spinner;
+	JDatePickerImpl datePicker;
 	
 	public CreaEvento() {
 		setBackground(Color.MAGENTA);
 		setLayout(null);
 		
-		btnNewButton = new JButton("ESCI");
+		btnNewButton = new JButton("Indietro");
 		btnNewButton.setBackground(Color.MAGENTA);
-		btnNewButton.setBounds(385, 11, 55, 23);
+		btnNewButton.setBounds(289, 11, 151, 23);
 		add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("NOME EVENTO");
@@ -71,13 +78,30 @@ public class CreaEvento extends JPanel {
 		JLabel lblNewLabel_1 = new JLabel("PAROGATI DISCO");
 		lblNewLabel_1.setForeground(Color.CYAN);
 		lblNewLabel_1.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_1.setBounds(99, 15, 257, 45);
+		lblNewLabel_1.setBounds(99, 41, 257, 45);
 		add(lblNewLabel_1);
 		
 		spinner_1 = new JSpinner();
 		spinner_1.setBounds(300, 203, 89, 20);
 		add(spinner_1);
+		
+		UtilDateModel model = new UtilDateModel();
+		Properties p = new Properties();
+		p.put("text.today", "Oggi");
+		p.put("text.month", "Mese");
+		p.put("text.year", "Anno");
+		JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
+		datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+        datePicker.setTextEditable(true);
+        datePicker.setShowYearButtons(true);
+		datePicker.setBounds(216, 121, 224, 21);
+		add(datePicker);
 
+	}
+	
+	public JDatePickerImpl getData()
+	{
+		return datePicker;
 	}
 	
 	public JButton getEsci() {

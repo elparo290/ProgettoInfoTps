@@ -8,9 +8,11 @@ import java.awt.Font;
 import javax.swing.JTextField;
 
 import Controller.Controller;
+import Model.Evento;
 
 import javax.swing.JComboBox;
 import javax.swing.JSpinner;
+import javax.swing.DefaultComboBoxModel;
 
 public class CreaPrenotazione extends JPanel {
 
@@ -21,15 +23,16 @@ public class CreaPrenotazione extends JPanel {
 	JButton btnNewButton;
 	JButton btnNewButton_1;
 	JSpinner spinner;
-	JComboBox comboBox;
+	JComboBox<String> comboBox;
 	
-	public CreaPrenotazione() {
+	public CreaPrenotazione() 
+	{
 		setBackground(Color.MAGENTA);
 		setLayout(null);
 		
-		btnNewButton = new JButton("ESCI");
+		btnNewButton = new JButton("Indietro");
 		btnNewButton.setBackground(Color.MAGENTA);
-		btnNewButton.setBounds(385, 11, 55, 23);
+		btnNewButton.setBounds(290, 11, 150, 23);
 		add(btnNewButton);
 		
 		JLabel lblCapienzaPersone = new JLabel("Numero persone");
@@ -42,7 +45,7 @@ public class CreaPrenotazione extends JPanel {
 		lblPrezzo.setBounds(239, 110, 111, 14);
 		add(lblPrezzo);
 		
-		comboBox = new JComboBox();
+		comboBox = new JComboBox<>();
 		comboBox.setBounds(239, 132, 101, 22);
 		add(comboBox);
 		
@@ -59,9 +62,14 @@ public class CreaPrenotazione extends JPanel {
 		JLabel lblNewLabel_1 = new JLabel("PAROGATI DISCO");
 		lblNewLabel_1.setForeground(Color.CYAN);
 		lblNewLabel_1.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_1.setBounds(99, 15, 257, 45);
+		lblNewLabel_1.setBounds(98, 26, 257, 45);
 		add(lblNewLabel_1);
 
+	}
+	
+	public void setText(String[] testo)
+	{
+		comboBox.setModel(new DefaultComboBoxModel<String>(testo));
 	}
 	
 	public JButton getEsci() {

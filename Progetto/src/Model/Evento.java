@@ -2,6 +2,8 @@ package Model;
 
 import java.util.ArrayList;
 
+import org.jdatepicker.impl.JDatePickerImpl;
+
 /**
  * classe evento che serve per creare le prenotazioni
  * la creazione può essere fatta solo da un'amministratore
@@ -22,13 +24,13 @@ public class Evento {
 		
 		return anagrafica;
 	}
-	
+
 	private int personeMax;
-	private String dataEvento;
 	private String nome;
 	private double prezzo;
 	private int postiRimanenti;
 	private int numPrenotazioni;
+	private JDatePickerImpl data;
 	private ArrayList<Prenotazione> prenotazioni = new ArrayList<Prenotazione>();
 	
 	/**
@@ -39,13 +41,14 @@ public class Evento {
 	 * @param nome nome dell'evento
 	 */
 	
-	public Evento(int personeMax, String dataEvento,double prezzo,String nome)
+	public Evento(int personeMax,double prezzo,String nome,JDatePickerImpl data)
 	{
 		this.personeMax=personeMax;
-		this.setDataEvento(dataEvento);
 		this.postiRimanenti=personeMax;
 		this.prezzo=prezzo;
 		this.numPrenotazioni=0;
+		this.nome=nome;
+		this.setData(data);
 	}
 	
 	/**
@@ -75,14 +78,6 @@ public class Evento {
 	public boolean eliminaPrenotazione(Prenotazione prenotazione)
 	{
 		return prenotazioni.remove(prenotazione);
-	}
-
-	public String getDataEvento() {
-		return dataEvento;
-	}
-
-	public void setDataEvento(String dataEvento) {
-		this.dataEvento = dataEvento;
 	}
 	
 	public int getPersoneMax() {
@@ -123,6 +118,14 @@ public class Evento {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public JDatePickerImpl getData() {
+		return data;
+	}
+
+	public void setData(JDatePickerImpl data) {
+		this.data = data;
 	}
 	
 }

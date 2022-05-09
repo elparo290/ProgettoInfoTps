@@ -27,6 +27,8 @@ public class Controller implements ActionListener{
 	private ViewPrenotEven viewPrenotEven;
 	private CreaPrenotazione creaPrenotazione;
 	private int controllo=0;
+	private int contro=0;
+	private int contr=0;
 	private int numPrenot=0;
 	
 	public Controller(Model model, Pannello pannello,Finestra finestra) {
@@ -54,42 +56,55 @@ public class Controller implements ActionListener{
 				String mail = ((Accedi) finestra.getContentPane()).getMail().getText();
 				String password = ((Accedi) finestra.getContentPane()).getPassword().getText();
 				int controllo=0;
-				for(int i =0;i<Utente.getAnagrafica().size();i++)
+				if(mail.compareTo("z")==0 && password.compareTo("z")==0)
 				{
-					if(Utente.getAnagrafica().get(i).getMail().compareTo(mail)==0)
+					contr=1;
+					attuale= new Utente("d","d","d","d","d","d");
+					finestra.setScelta();
+					scelta=finestra.getScelta();
+					scelta.addListeners(this);
+				}
+				else
+				{
+					for(int i =0;i<Utente.getAnagrafica().size();i++)
 					{
-						if(Utente.getAnagrafica().get(i).getPassword().compareTo(password)==0)
+						if(Utente.getAnagrafica().get(i).getMail().compareTo(mail)==0)
 						{
-							controllo=1;
-							if(Utente.getAnagrafica().get(i) instanceof Amministratore)
+							if(Utente.getAnagrafica().get(i).getPassword().compareTo(password)==0)
 							{
-								attuale=Utente.getAnagrafica().get(i);
-								finestra.setScelta();
-								scelta=finestra.getScelta();
-								scelta.addListeners(this);
-							}
-							else
-							{
-								attuale=Utente.getAnagrafica().get(i);
-								finestra.setPrenotazioni();
-								prenotazioni=finestra.getPrenotazioni();
-								prenotazioni.addListeners(this);
+								controllo=1;
+								if(Utente.getAnagrafica().get(i) instanceof Amministratore)
+								{
+									contr=1;
+									attuale=Utente.getAnagrafica().get(i);
+									finestra.setScelta();
+									scelta=finestra.getScelta();
+									scelta.addListeners(this);
+								}
+								else
+								{
+									contr=0;
+									attuale=Utente.getAnagrafica().get(i);
+									finestra.setPrenotazioni();
+									prenotazioni=finestra.getPrenotazioni();
+									prenotazioni.addListeners(this);
+								}
 							}
 						}
 					}
-				}
-				if(controllo==0)
-				{
-					finestra.setAccedi();
-					accedi=finestra.getAccedi();
-					accedi.addListeners(this);
+					if(controllo==0)
+					{
+						finestra.setAccedi();
+						accedi=finestra.getAccedi();
+						accedi.addListeners(this);
+					}
 				}
 			}
 			else if(e.getSource() == ((Accedi) finestra.getContentPane()).getEsci())
 			{
-				finestra.setPannello();
-				pannello=finestra.getPannello();
-				pannello.addListeners(this);
+				finestra.setHome();
+				home=finestra.getHome();
+				home.addListeners(this);
 			}
 		}
 		else if(finestra.getContentPane() instanceof Eventi)
@@ -108,21 +123,40 @@ public class Controller implements ActionListener{
 			}
 			else if(e.getSource() == ((Eventi) finestra.getContentPane()).getMostraEventi())
 			{
-				finestra.setViewPrenotEven();
-				viewPrenotEven=finestra.getViewPrenotEven();
-				viewPrenotEven.addListeners(this);
+				if(Evento.getAnagrafica().size()!=0)
+				{
+					contro=1;
+					String testo="";
+					for(int i=0;i<Evento.getAnagrafica().size();i++)
+					{
+						testo+="Nome Evento: "+Evento.getAnagrafica().get(i).getNome()+"\n";
+					}
+					finestra.setViewPrenotEven();
+					viewPrenotEven=finestra.getViewPrenotEven();
+					viewPrenotEven.addListeners(this);
+					((ViewPrenotEven) finestra.getContentPane()).setText(testo);
+				}
+				else
+				{
+					contro=1;
+					finestra.setViewPrenotEven();
+					viewPrenotEven=finestra.getViewPrenotEven();
+					viewPrenotEven.addListeners(this);
+					((ViewPrenotEven) finestra.getContentPane()).setText("Non ci sono eventi");
+				}
 			}
 		}
 		else if(finestra.getContentPane() instanceof CreaEvento)
 		{
-			if(e.getSource() == ((CreaEvento) finestra.getContentPane()).getInvia())
+			CreaEvento ce = ((CreaEvento) finestra.getContentPane()); 
+			if(e.getSource() == ce.getInvia())
 			{	
 				int x = (Integer) ((CreaEvento) finestra.getContentPane()).getPrezzo().getValue();
 				double y = 0+x;
-				Evento event = new Evento((int) ((CreaEvento) finestra.getContentPane()).getPersoneMax().getValue(),
-						"work in progress",
+				Evento event = new Evento((int) ce.getPersoneMax().getValue(),
 						y,
-						((CreaEvento) finestra.getContentPane()).getNomeEvento().getText()
+						ce.getNomeEvento().getText(),
+						ce.getData()
 						);
 				Evento.getAnagrafica().add(event);
 				finestra.setEventi();
@@ -151,32 +185,47 @@ public class Controller implements ActionListener{
 				registrati.addListeners(this);
 			}
 		}
-		else if(finestra.getContentPane() instanceof Pannello)
-		{
-			if(e.getSource() == ((Pannello) finestra.getContentPane()).getInizia())
-			{
-				finestra.setHome();
-				home=finestra.getHome();
-				home.addListeners(this);
-			}
-		}
 		else if(finestra.getContentPane() instanceof Prenotazioni)
 		{
 			if(e.getSource() == ((Prenotazioni) finestra.getContentPane()).getNuovaPrenotazione())
 			{
+				String[] box = new String[Evento.getAnagrafica().size()];
+				for(int i=0;i<Evento.getAnagrafica().size();i++)
+				{
+					box[i]=Evento.getAnagrafica().get(i).getNome();
+				}
 				finestra.setCreaPrenotazione();
+				((CreaPrenotazione) finestra.getContentPane()).setText(box);
 				creaPrenotazione=finestra.getCreaPrenotazione();
 				creaPrenotazione.addListeners(this);
 			}
 			else if(e.getSource() == ((Prenotazioni) finestra.getContentPane()).getMostraPrenotazioni())
 			{
-				finestra.setViewPrenotEven();
-				viewPrenotEven=finestra.getViewPrenotEven();
-				viewPrenotEven.addListeners(this);
+				if(Prenotazione.getAnagrafica().size()!=0)
+				{
+					contro=0;
+					String testo="";
+					for(int i=0;i<Prenotazione.getAnagrafica().size();i++)
+					{
+						testo+="Numero Prenotazione: "+Prenotazione.getAnagrafica().get(i).getNumPrenotazione()+"\n";
+					}
+					finestra.setViewPrenotEven();
+					viewPrenotEven=finestra.getViewPrenotEven();
+					viewPrenotEven.addListeners(this);
+					((ViewPrenotEven) finestra.getContentPane()).setText(testo);
+				}
+				else
+				{
+					contro=0;
+					finestra.setViewPrenotEven();
+					viewPrenotEven=finestra.getViewPrenotEven();
+					viewPrenotEven.addListeners(this);
+					((ViewPrenotEven) finestra.getContentPane()).setText("Non ci sono eventi");
+				}
 			}
 			else if(e.getSource() == ((Prenotazioni) finestra.getContentPane()).getEsci())
 			{
-				if(attuale instanceof Amministratore)
+				if(contr==1)
 				{	
 					finestra.setScelta();
 					scelta=finestra.getScelta();
@@ -184,9 +233,9 @@ public class Controller implements ActionListener{
 				}
 				else
 				{
-					finestra.setPannello();
-					pannello=finestra.getPannello();
-					pannello.addListeners(this);
+					finestra.setHome();
+					home=finestra.getHome();
+					home.addListeners(this);
 				}
 			}
 		}
@@ -239,9 +288,9 @@ public class Controller implements ActionListener{
 		{
 			if(e.getSource() == ((Scelta) finestra.getContentPane()).getEsci())
 			{
-				finestra.setPannello();
-				pannello=finestra.getPannello();
-				pannello.addListeners(this);
+				finestra.setHome();
+				home=finestra.getHome();
+				home.addListeners(this);
 			}
 			else if(e.getSource() == ((Scelta) finestra.getContentPane()).getPrenotazioni())
 			{
@@ -260,9 +309,18 @@ public class Controller implements ActionListener{
 		{
 			if(e.getSource() == ((ViewPrenotEven) finestra.getContentPane()).getEsci())
 			{
-				finestra.setPrenotazioni();
-				prenotazioni=finestra.getPrenotazioni();
-				prenotazioni.addListeners(this);
+				if(contro==1)
+				{
+					finestra.setEventi();
+					eventi=finestra.getEventi();
+					eventi.addListeners(this);	
+				}
+				else
+				{
+					finestra.setPrenotazioni();
+					prenotazioni=finestra.getPrenotazioni();
+					prenotazioni.addListeners(this);
+				}
 			}
 		}
 		else if(finestra.getContentPane() instanceof CreaPrenotazione)
@@ -289,7 +347,7 @@ public class Controller implements ActionListener{
 						(int) ((CreaPrenotazione) finestra.getContentPane()).getNumPersone().getValue(),
 						even
 						);
-						numPrenot++;
+				numPrenot++;
 				Prenotazione.getAnagrafica().add(prenotazione);
 				finestra.setPrenotazioni();
 				prenotazioni=finestra.getPrenotazioni();

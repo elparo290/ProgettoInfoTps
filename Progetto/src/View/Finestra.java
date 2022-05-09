@@ -46,10 +46,6 @@ public class Finestra extends JFrame {
 		return (Home) contentPane;
 	}
 	
-	public PrenotaEvento getPrenotaEvento() {
-		return (PrenotaEvento) contentPane;
-	}
-	
 	public Prenotazioni getPrenotazioni() {
 		return (Prenotazioni) contentPane;
 	}
@@ -130,17 +126,6 @@ public class Finestra extends JFrame {
 	
 	}
 	
-	public void setPrenotaEvento()
-	{
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 433);
-		contentPane = new PrenotaEvento();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
-		this.setVisible(true);
-	
-	}
 	
 	public void setPrenotazioni()
 	{

@@ -25,7 +25,7 @@ public class Prenotazioni extends JPanel {
 		
 		btnNewButton = new JButton("Nuova Prenotazione");
 		btnNewButton.setBackground(Color.MAGENTA);
-		btnNewButton.setBounds(165, 204, 139, 23);
+		btnNewButton.setBounds(138, 204, 192, 23);
 		add(btnNewButton);
 		
 		btnNewButton_1 = new JButton("Mostra le mie prenotazioni");
@@ -33,9 +33,9 @@ public class Prenotazioni extends JPanel {
 		btnNewButton_1.setBounds(138, 238, 192, 23);
 		add(btnNewButton_1);
 		
-		btnNewButton_2 = new JButton("ESCI");
+		btnNewButton_2 = new JButton("Indietro");
 		btnNewButton_2.setBackground(Color.MAGENTA);
-		btnNewButton_2.setBounds(337, 10, 129, 23);
+		btnNewButton_2.setBounds(275, 10, 165, 23);
 		add(btnNewButton_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("PAROGATI DISCO");
