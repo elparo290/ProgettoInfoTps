@@ -351,6 +351,30 @@ public class Controller implements ActionListener{
 	}
 	
 	/**
+	 * 
+	 * @param stringa
+	 * @return
+	 */
+	
+	private boolean isMail(String stringa)
+	{
+		for(int i=0;i<stringa.length();i++)
+		{
+			if(stringa.charAt(i)=='@')
+			{
+				for(int j=i;j<stringa.length();j++)
+				{
+					if(stringa.charAt(j)=='.')
+					{
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
+	/**
 	 * @param panel un'istanza del pannello Accedi
 	 * @param evtSource la sorgente dell'evento da gestire
 	 */
@@ -367,9 +391,13 @@ public class Controller implements ActionListener{
 			{
 				JOptionPane.showMessageDialog(pn, "devi completare tutti i campi");	
 			}
-			else if(panel.getTelefono().getText().length()!=9 || !isTelefono(panel.getTelefono().getText()))
+			else if(panel.getTelefono().getText().length()!=10 || !isTelefono(panel.getTelefono().getText()))
 			{
 				JOptionPane.showMessageDialog(pn, "numero di telefono non valido");	
+			}
+			else if(!isMail(panel.getMail().getText()))
+			{
+				JOptionPane.showMessageDialog(pn, "mail non valida");	
 			}
 			else
 			{
