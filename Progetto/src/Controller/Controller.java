@@ -204,7 +204,6 @@ public class Controller implements ActionListener{
 		{	
 			int x = (Integer) panel.getPrezzo().getValue();
 			double y = 0+x;
-			System.out.println(panel.getData());
 			if((int) panel.getPersoneMax().getValue()==0 || y==0 || panel.getNomeEvento().getText().equals(""))
 			{
 				JOptionPane.showMessageDialog(pn, "devi completare tutti i campi");	
@@ -474,6 +473,15 @@ public class Controller implements ActionListener{
 	
 	private void actionPerformedCreaPrenotazione(CreaPrenotazione panel, Object evtSource)
 	{
+		Evento even=null;
+		String event = (String) panel.getEvento().getSelectedItem();
+		for(int i=0;i<Evento.getAnagrafica().size();i++)
+		{
+			if(Evento.getAnagrafica().get(i).getNome().compareTo(event)==0)
+			{
+				even=Evento.getAnagrafica().get(i);
+			}
+		}
 		if(evtSource == panel.getEsci())
 		{
 			finestra.setPrenotazioni();
@@ -486,17 +494,14 @@ public class Controller implements ActionListener{
 			{
 				JOptionPane.showMessageDialog(pn, "numero di persone non valido");	
 			}
+			else if(even.getPostiRimanenti()-(int) panel.getNumPersone().getValue()<0)
+			{
+				String testo="Numero di persone non valido. Sono rimasti solo "+even.getPostiRimanenti()+
+						" posti, mentre tu richiedi "+panel.getNumPersone().getValue()+" posti";
+				JOptionPane.showMessageDialog(pn, testo);	
+			}
 			else
 			{
-				Evento even=null;
-				String event = (String) panel.getEvento().getSelectedItem();
-				for(int i=0;i<Evento.getAnagrafica().size();i++)
-				{
-					if(Evento.getAnagrafica().get(i).getNome().compareTo(event)==0)
-					{
-						even=Evento.getAnagrafica().get(i);
-					}
-				}
 				Prenotazione prenotazione = new Prenotazione(attuale,
 						numPrenot,
 						(int) panel.getNumPersone().getValue(),
