@@ -10,6 +10,10 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
 
+/**
+ * 	Classe per smistare tra accedi o registrati
+ */
+
 public class Home extends JPanel {
 
 	JButton btnNewButton;

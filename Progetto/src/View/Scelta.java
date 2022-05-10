@@ -9,6 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 
+/**
+ * 	Classe per smistare un'amministratore tra prenotazioni e eventi
+ */
+
 public class Scelta extends JPanel {
 
 	/**

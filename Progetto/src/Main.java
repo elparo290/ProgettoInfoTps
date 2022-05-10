@@ -3,6 +3,10 @@ import Model.*;
 import Model.Evento;
 import View.*;
 
+/**
+ * Classe Main che gestisce il protocollo mvc(model view controller)
+ */
+
 public class Main {
 
 	public static void main(String[] args) {

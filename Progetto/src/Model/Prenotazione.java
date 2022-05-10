@@ -41,6 +41,7 @@ public class Prenotazione {
 		this.setNumeroPersone(numPersone);
 		this.setNumPrenotazione(numPrenotazione);
 		this.setEvento(evento);
+		evento.setPostiRimanenti(evento.getPostiRimanenti()-this.numeroPersone);
 	}
 	
 	public Utente getPersona() {
@@ -74,5 +75,13 @@ public class Prenotazione {
 	public void setEvento(Evento evento) {
 		this.evento = evento;
 	}
+
+	@Override
+	public String toString() {
+		return "Nome Utente= " + persona.getNome() + ",  numero persone= " + numeroPersone + ",  numero Prenotazione= "
+				+ numPrenotazione + ", Evento= " + evento.getNome() + "\n\n";
+	}
+	
+	
 	
 }

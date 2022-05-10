@@ -9,6 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 
+/**
+ * 	Classe per smistare tra visione e creazione di una prenotazione
+ */
+
 public class Prenotazioni extends JPanel {
 
 	/**

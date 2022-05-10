@@ -8,6 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * 	Classe per fare la finestra.
+ * 
+ */
+
 public class Finestra extends JFrame {
 
 	private JPanel contentPane;

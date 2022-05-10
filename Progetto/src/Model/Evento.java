@@ -1,6 +1,11 @@
 package Model;
 
+import java.text.Format;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.jdatepicker.impl.JDatePickerImpl;
 
@@ -30,15 +35,14 @@ public class Evento {
 	private double prezzo;
 	private int postiRimanenti;
 	private int numPrenotazioni;
-	private JDatePickerImpl data;
-	private ArrayList<Prenotazione> prenotazioni = new ArrayList<Prenotazione>();
+	private LocalDate data;
 	
 	/**
 	 * Metodo per costruire un'evento
 	 * @param personeMax massimo di persone che posso entrare nell'evento
-	 * @param dataEvento data dell'evento in programmazione
 	 * @param prezzo prezzo a persona dell'evento
 	 * @param nome nome dell'evento
+	 * @param data data dell'evento
 	 */
 	
 	public Evento(int personeMax,double prezzo,String nome,JDatePickerImpl data)
@@ -46,38 +50,16 @@ public class Evento {
 		this.personeMax=personeMax;
 		this.postiRimanenti=personeMax;
 		this.prezzo=prezzo;
-		this.numPrenotazioni=0;
 		this.nome=nome;
-		this.setData(data);
-	}
-	
-	/**
-	 * Metodo per l'aggiunta di una prenotazione all'evento
-	 * @param prenotazione prenotazione da aggiungere
-	 * @return vero se è stato aggiunto correttamente, falso se non è possibile aggiungere
-	 */
-	
-	public boolean aggiungiPrenotazione(Prenotazione prenotazione)
-	{
-		if(postiRimanenti+prenotazione.getNumeroPersone()<=this.personeMax)
+		this.numPrenotazioni=0;
+		this.data = LocalDate.of(data.getModel().getYear(), data.getModel().getMonth()+1,data.getModel().getDay());
+		for(int i=0;i<Prenotazione.getAnagrafica().size();i++)
 		{
-			prenotazioni.add(prenotazione);
-			prenotazioni.get(prenotazioni.size()-1).setNumPrenotazione(numPrenotazioni);
-			numPrenotazioni++;
-			postiRimanenti-=prenotazione.getNumeroPersone();
-			return true;
+			if(Prenotazione.getAnagrafica().get(i).getEvento().equals(this))
+			{
+				this.numPrenotazioni++;
+			}
 		}
-		return false;
-	}
-	
-	/**
-	 * 
-	 * @param prenotazione
-	 * @return vero se è stato eliminato correttamente, falso se non è stata trovata la prenotazione
-	 */
-	public boolean eliminaPrenotazione(Prenotazione prenotazione)
-	{
-		return prenotazioni.remove(prenotazione);
 	}
 	
 	public int getPersoneMax() {
@@ -96,14 +78,6 @@ public class Evento {
 		this.postiRimanenti = postiRimanenti;
 	}
 
-	public ArrayList<Prenotazione> getPrenotazioni() {
-		return prenotazioni;
-	}
-
-	public void setPrenotazioni(ArrayList<Prenotazione> prenotazioni) {
-		this.prenotazioni = prenotazioni;
-	}
-
 	public double getPrezzo() {
 		return prezzo;
 	}
@@ -120,12 +94,20 @@ public class Evento {
 		this.nome = nome;
 	}
 
-	public JDatePickerImpl getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(JDatePickerImpl data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
+
+	@Override
+	public String toString() {
+		return "Massimo persone= " + personeMax + ",  nome evento= " + nome + ",  prezzo= " + prezzo + ",  posti rimanenti= "
+				+ postiRimanenti + ",  Numero Prenotazione= " + numPrenotazioni + ",  data evento= " + data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "\n\n";
+	}
+	
+	
 	
 }

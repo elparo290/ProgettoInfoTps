@@ -5,10 +5,12 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.time.chrono.ChronoLocalDate;
 import java.util.Properties;
 
 import javax.swing.JTextField;
 
+import org.jdatepicker.JDatePicker;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
@@ -16,7 +18,12 @@ import org.jdatepicker.impl.UtilDateModel;
 import Controller.Controller;
 
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JSpinner;
+
+/**
+ * 	Classe per creare evento
+ */
 
 public class CreaEvento extends JPanel {
 	private JTextField textField;
@@ -96,7 +103,7 @@ public class CreaEvento extends JPanel {
         datePicker.setShowYearButtons(true);
 		datePicker.setBounds(216, 121, 224, 21);
 		add(datePicker);
-
+		
 	}
 	
 	public JDatePickerImpl getData()

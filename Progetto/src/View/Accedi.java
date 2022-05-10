@@ -10,6 +10,11 @@ import Controller.Controller;
 
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+
+/**
+ * 	Classe per fare l'accesso con l'utente
+ */
 
 public class Accedi extends JPanel {
 	private JTextField textField;
@@ -84,5 +89,4 @@ public class Accedi extends JPanel {
 		btnNewButton.addActionListener(c);
 		btnNewButton_1.addActionListener(c);
 	}
-	
 }

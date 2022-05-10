@@ -9,6 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 
+/**
+ * 	Classe per smistarti tra creazione o visione eventi
+ */
+
 public class Eventi extends JPanel {
 
 	/**

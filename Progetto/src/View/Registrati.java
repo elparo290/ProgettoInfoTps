@@ -18,6 +18,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 
+/**
+ * 	Classe per fare registrare un nuovo utente
+ */
+
 public class Registrati extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;

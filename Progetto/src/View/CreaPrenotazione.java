@@ -14,6 +14,10 @@ import javax.swing.JComboBox;
 import javax.swing.JSpinner;
 import javax.swing.DefaultComboBoxModel;
 
+/**
+ * 	Classe per creare prenotazione
+ */
+
 public class CreaPrenotazione extends JPanel {
 
 	/**

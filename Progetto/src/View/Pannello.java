@@ -9,6 +9,10 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JLabel;
 
+/**
+ * 	Classe per introdurre al programma
+ */
+
 public class Pannello extends JPanel {
 
 	
