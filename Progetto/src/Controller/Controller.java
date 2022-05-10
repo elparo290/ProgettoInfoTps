@@ -360,11 +360,11 @@ public class Controller implements ActionListener{
 	{
 		for(int i=0;i<stringa.length();i++)
 		{
-			if(stringa.charAt(i)=='@')
+			if(stringa.charAt(i)=='@' && i>0)
 			{
-				for(int j=i;j<stringa.length();j++)
+				for(int j=i+1;j<stringa.length();j++)
 				{
-					if(stringa.charAt(j)=='.')
+					if(stringa.charAt(j)=='.' && j!=i+1 && j!=stringa.length()-1)
 					{
 						return true;
 					}
