@@ -1,6 +1,9 @@
 package Model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+
+import org.jdatepicker.impl.JDatePickerImpl;
 
 /**
  * Classe dell'utente che deve essere registrato o può accedere
@@ -28,7 +31,7 @@ public class Utente {
 	private String nome;
 	private String cognome;
 	private String telefono;
-	private String dataDiNascita;
+	private LocalDate dataDiNascita;
 	private String password;
 	
 	/**
@@ -41,13 +44,13 @@ public class Utente {
 	 * @param password password dell'utente
 	 */
 	
-	public Utente(String mail,String nome,String cognome,String telefono,String dataDiNascita,String password)
+	public Utente(String mail,String nome,String cognome,String telefono,JDatePickerImpl data,String password)
 	{
 		this.setMail(mail);
 		this.setNome(nome);
 		this.setCognome(cognome);
 		this.setTelefono(telefono);
-		this.setDataDiNascita(dataDiNascita);
+		this.dataDiNascita = LocalDate.of(data.getModel().getYear(), data.getModel().getMonth()+1,data.getModel().getDay());
 		this.setPassword(password);
 		if(anagrafica == null)
 		{
@@ -55,6 +58,29 @@ public class Utente {
 		}
 	}
 
+	/**
+	 * 
+	 * @param mail
+	 * @param nome
+	 * @param cognome
+	 * @param telefono
+	 * @param password
+	 */
+	
+	public Utente(String mail,String nome,String cognome,String telefono,String password)
+	{
+		this.setMail(mail);
+		this.setNome(nome);
+		this.setCognome(cognome);
+		this.setTelefono(telefono);
+		this.dataDiNascita=null;
+		this.setPassword(password);
+		if(anagrafica == null)
+		{
+			anagrafica = new ArrayList<Utente>();
+		}
+	}
+	
 	public String getMail() {
 		return mail;
 	}
@@ -87,11 +113,11 @@ public class Utente {
 		this.telefono = telefono;
 	}
 
-	public String getDataDiNascita() {
+	public LocalDate getDataDiNascita() {
 		return dataDiNascita;
 	}
 
-	public void setDataDiNascita(String dataDiNascita) {
+	public void setDataDiNascita(LocalDate dataDiNascita) {
 		this.dataDiNascita = dataDiNascita;
 	}
 	

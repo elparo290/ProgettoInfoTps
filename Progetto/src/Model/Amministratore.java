@@ -1,5 +1,7 @@
 package Model;
 
+import org.jdatepicker.impl.JDatePickerImpl;
+
 /**
  * Classe amministratore, estende la classe;
  * si differenzia dall'utente solo perchè 
@@ -19,9 +21,9 @@ public class Amministratore extends Utente{
 	 * @param password password amministratore
 	 */
 	
-	public Amministratore(String mail,String nome,String cognome,String telefono,String dataDiNascita,String password)
+	public Amministratore(String mail,String nome,String cognome,String telefono,JDatePickerImpl data,String password)
 	{
-		super(mail,nome,cognome,telefono,dataDiNascita,password);
+		super(mail,nome,cognome,telefono,data,password);
 	}
 	
 }

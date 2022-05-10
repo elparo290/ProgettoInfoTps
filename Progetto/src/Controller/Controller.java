@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import org.jdatepicker.impl.JDatePickerImpl;
+
 import Model.*;
 import Model.Evento;
 import View.*;
@@ -31,10 +33,10 @@ public class Controller implements ActionListener{
 	private Scelta scelta;
 	private ViewPrenotEven viewPrenotEven;
 	private CreaPrenotazione creaPrenotazione;
-	private int controllo=0;
-	private int contro=0;
-	private int contr=0;
-	private int numPrenot=0;
+	private int controllo;
+	private int contro;
+	private int contr;
+	private int numPrenot;
 	
 	/**
 	 * Metodo costruttore della classe controller
@@ -48,6 +50,10 @@ public class Controller implements ActionListener{
 		this.md = model;
 		this.finestra=finestra;
 		pn.addListeners(this);
+		this.controllo=0;
+		this.contro=0;
+		this.contr=0;
+		this.numPrenot=0;
 	}
 	
 	/**
@@ -64,47 +70,54 @@ public class Controller implements ActionListener{
 			String mail = panel.getMail().getText();
 			String password = panel.getPassword().getText();
 			int controllo=0;
-			if(mail.compareTo("z")==0 && password.compareTo("z")==0)
-			{
-				contr=1;
-				attuale= new Utente("d","d","d","d","d","d");
-				finestra.setScelta();
-				scelta=finestra.getScelta();
-				scelta.addListeners(this);
+			if(mail.equals("") || password.equals("")) {
+				JOptionPane.showMessageDialog(pn, "devi completare tutti i campi");	
 			}
 			else
 			{
-				for(int i =0;i<Utente.getAnagrafica().size();i++)
+				if(mail.compareTo("z")==0 && password.compareTo("z")==0)
 				{
-					if(Utente.getAnagrafica().get(i).getMail().compareTo(mail)==0)
+					contr=1;
+					attuale= new Utente("d","d","d","d","d");
+					finestra.setScelta();
+					scelta=finestra.getScelta();
+					scelta.addListeners(this);
+				}
+				else
+				{
+					for(int i =0;i<Utente.getAnagrafica().size();i++)
 					{
-						if(Utente.getAnagrafica().get(i).getPassword().compareTo(password)==0)
+						if(Utente.getAnagrafica().get(i).getMail().compareTo(mail)==0)
 						{
-							controllo=1;
-							if(Utente.getAnagrafica().get(i) instanceof Amministratore)
+							if(Utente.getAnagrafica().get(i).getPassword().compareTo(password)==0)
 							{
-								contr=1;
-								attuale=Utente.getAnagrafica().get(i);
-								finestra.setScelta();
-								scelta=finestra.getScelta();
-								scelta.addListeners(this);
-							}
-							else
-							{
-								contr=0;
-								attuale=Utente.getAnagrafica().get(i);
-								finestra.setPrenotazioni();
-								prenotazioni=finestra.getPrenotazioni();
-								prenotazioni.addListeners(this);
+								controllo=1;
+								if(Utente.getAnagrafica().get(i) instanceof Amministratore)
+								{
+									contr=1;
+									attuale=Utente.getAnagrafica().get(i);
+									finestra.setScelta();
+									scelta=finestra.getScelta();
+									scelta.addListeners(this);
+								}
+								else
+								{
+									contr=0;
+									attuale=Utente.getAnagrafica().get(i);
+									finestra.setPrenotazioni();
+									prenotazioni=finestra.getPrenotazioni();
+									prenotazioni.addListeners(this);
+								}
 							}
 						}
 					}
-				}
-				if(controllo==0)
-				{
-					finestra.setAccedi();
-					accedi=finestra.getAccedi();
-					accedi.addListeners(this);
+					if(controllo==0)
+					{
+						JOptionPane.showMessageDialog(pn, "non ci sono utenti che corrispondono");	
+						finestra.setAccedi();
+						accedi=finestra.getAccedi();
+						accedi.addListeners(this);
+					}
 				}
 			}
 		}
@@ -171,10 +184,10 @@ public class Controller implements ActionListener{
 			else
 			{
 				contro=1;
-				finestra.setViewPrenotEven();
-				viewPrenotEven=finestra.getViewPrenotEven();
-				viewPrenotEven.addListeners(this);
-				((ViewPrenotEven) finestra.getContentPane()).setText("Non ci sono eventi");
+				JOptionPane.showMessageDialog(pn, "non ci sono eventi");	
+				finestra.setEventi();
+				eventi=finestra.getEventi();
+				eventi.addListeners(this);
 			}
 		}
 	}
@@ -191,15 +204,31 @@ public class Controller implements ActionListener{
 		{	
 			int x = (Integer) panel.getPrezzo().getValue();
 			double y = 0+x;
-			Evento event = new Evento((int) panel.getPersoneMax().getValue(),
-					y,
-					panel.getNomeEvento().getText(),
-					panel.getData()
-					);
-			Evento.getAnagrafica().add(event);
-			finestra.setEventi();
-			eventi=finestra.getEventi();
-			eventi.addListeners(this);
+			System.out.println(panel.getData());
+			if((int) panel.getPersoneMax().getValue()==0 || y==0 || panel.getNomeEvento().getText().equals(""))
+			{
+				JOptionPane.showMessageDialog(pn, "devi completare tutti i campi");	
+			}
+			else if((int) panel.getPersoneMax().getValue()<=0 || y<=0)
+			{
+				JOptionPane.showMessageDialog(pn, "le persone o il prezzo devono essere maggiori di 0");
+			}
+			else if(panel.getNomeEvento().getText().equals(""))
+			{
+				JOptionPane.showMessageDialog(pn, "assegna un nome all'evento");
+			}
+			else
+			{
+				Evento event = new Evento((int) panel.getPersoneMax().getValue(),
+						y,
+						panel.getNomeEvento().getText(),
+						panel.getData()
+						);
+				Evento.getAnagrafica().add(event);
+				finestra.setEventi();
+				eventi=finestra.getEventi();
+				eventi.addListeners(this);
+			}
 		}
 		else if(evtSource == panel.getEsci())
 		{	
@@ -241,15 +270,22 @@ public class Controller implements ActionListener{
 	{
 		if(evtSource == panel.getNuovaPrenotazione())
 		{
-			String[] box = new String[Evento.getAnagrafica().size()];
-			for(int i=0;i<Evento.getAnagrafica().size();i++)
+			if(Evento.getAnagrafica().size()==0)
 			{
-				box[i]=Evento.getAnagrafica().get(i).getNome();
+				JOptionPane.showMessageDialog(pn, "non ci sono eventi disponibili da prenotare");	
 			}
-			finestra.setCreaPrenotazione();
-			((CreaPrenotazione) finestra.getContentPane()).setText(box);
-			creaPrenotazione=finestra.getCreaPrenotazione();
-			creaPrenotazione.addListeners(this);
+			else
+			{
+				String[] box = new String[Evento.getAnagrafica().size()];
+				for(int i=0;i<Evento.getAnagrafica().size();i++)
+				{
+					box[i]=Evento.getAnagrafica().get(i).getNome();
+				}
+				finestra.setCreaPrenotazione();
+				((CreaPrenotazione) finestra.getContentPane()).setText(box);
+				creaPrenotazione=finestra.getCreaPrenotazione();
+				creaPrenotazione.addListeners(this);
+			}
 		}
 		else if(evtSource == panel.getMostraPrenotazioni())
 		{
@@ -274,10 +310,10 @@ public class Controller implements ActionListener{
 			else
 			{
 				contro=0;
-				finestra.setViewPrenotEven();
-				viewPrenotEven=finestra.getViewPrenotEven();
-				viewPrenotEven.addListeners(this);
-				((ViewPrenotEven) finestra.getContentPane()).setText("Non ci sono prenotazioni");
+				JOptionPane.showMessageDialog(pn, "Non ci sono Prenotazioni");	
+				finestra.setPrenotazioni();
+				prenotazioni=finestra.getPrenotazioni();
+				prenotazioni.addListeners(this);
 			}
 		}
 		else if(evtSource == panel.getEsci())
@@ -299,10 +335,27 @@ public class Controller implements ActionListener{
 	
 	/**
 	 * 
+	 * @param stringa
+	 * @return
+	 */
+
+	private boolean isTelefono(String stringa)
+	{
+		for(int i=0;i<stringa.length();i++)
+		{
+			if(stringa.charAt(i)<48 || stringa.charAt(i)>57)
+			{
+				return false;
+			}
+		}
+		return	true;
+	}
+	
+	/**
 	 * @param panel un'istanza del pannello Accedi
 	 * @param evtSource la sorgente dell'evento da gestire
 	 */
-	
+
 	private void actionPerformedRegistrati(Registrati panel, Object evtSource)
 	{
 		if(evtSource == panel.getAmministratore())
@@ -311,34 +364,45 @@ public class Controller implements ActionListener{
 		}
 		else if(evtSource == panel.getInvia())
 		{
-			if(controllo==1)
+			if(panel.getMail().getText().equals("") || panel.getNome().getText().equals("") || panel.getCognome().getText().equals("") || panel.getTelefono().getText().equals("") || panel.getPassword().getText().equals(""))
 			{
-				controllo=0;
-				Amministratore prova = new Amministratore(panel.getMail().getText(),
-						panel.getNome().getText(),
-						panel.getCognome().getText(),
-						panel.getTelefono().getText(),
-						"in lavoro",
-						panel.getPassword().getText()
-						);
-				Utente.getAnagrafica().add(prova);
-				finestra.setHome();
-				home=finestra.getHome();
-				home.addListeners(this);
+				JOptionPane.showMessageDialog(pn, "devi completare tutti i campi");	
+			}
+			else if(panel.getTelefono().getText().length()!=9 || !isTelefono(panel.getTelefono().getText()))
+			{
+				JOptionPane.showMessageDialog(pn, "numero di telefono non valido");	
 			}
 			else
 			{
-				Utente prova = new Utente(panel.getMail().getText(),
-						panel.getNome().getText(),
-						panel.getCognome().getText(),
-						panel.getTelefono().getText(),
-						"in lavoro",
-						panel.getPassword().getText()
-						);
-				Utente.getAnagrafica().add(prova);
-				finestra.setHome();
-				home=finestra.getHome();
-				home.addListeners(this);
+				if(controllo==1)
+				{
+					controllo=0;
+					Amministratore prova = new Amministratore(panel.getMail().getText(),
+							panel.getNome().getText(),
+							panel.getCognome().getText(),
+							panel.getTelefono().getText(),
+							panel.getData(),
+							panel.getPassword().getText()
+							);
+					Utente.getAnagrafica().add(prova);
+					finestra.setHome();
+					home=finestra.getHome();
+					home.addListeners(this);
+				}
+				else
+				{
+					Utente prova = new Utente(panel.getMail().getText(),
+							panel.getNome().getText(),
+							panel.getCognome().getText(),
+							panel.getTelefono().getText(),
+							panel.getData(),
+							panel.getPassword().getText()
+							);
+					Utente.getAnagrafica().add(prova);
+					finestra.setHome();
+					home=finestra.getHome();
+					home.addListeners(this);
+				}
 			}
 		}
 		else if(evtSource == panel.getEsci())
@@ -418,25 +482,32 @@ public class Controller implements ActionListener{
 		}
 		else if(evtSource == panel.getInvia())
 		{
-			Evento even=null;
-			String event = (String) panel.getEvento().getSelectedItem();
-			for(int i=0;i<Evento.getAnagrafica().size();i++)
+			if((int) panel.getNumPersone().getValue()<=0)
 			{
-				if(Evento.getAnagrafica().get(i).getNome().compareTo(event)==0)
-				{
-					even=Evento.getAnagrafica().get(i);
-				}
+				JOptionPane.showMessageDialog(pn, "numero di persone non valido");	
 			}
-			Prenotazione prenotazione = new Prenotazione(attuale,
-					numPrenot,
-					(int) panel.getNumPersone().getValue(),
-					even
-					);
-			numPrenot++;
-			Prenotazione.getAnagrafica().add(prenotazione);
-			finestra.setPrenotazioni();
-			prenotazioni=finestra.getPrenotazioni();
-			prenotazioni.addListeners(this);
+			else
+			{
+				Evento even=null;
+				String event = (String) panel.getEvento().getSelectedItem();
+				for(int i=0;i<Evento.getAnagrafica().size();i++)
+				{
+					if(Evento.getAnagrafica().get(i).getNome().compareTo(event)==0)
+					{
+						even=Evento.getAnagrafica().get(i);
+					}
+				}
+				Prenotazione prenotazione = new Prenotazione(attuale,
+						numPrenot,
+						(int) panel.getNumPersone().getValue(),
+						even
+						);
+				numPrenot++;
+				Prenotazione.getAnagrafica().add(prenotazione);
+				finestra.setPrenotazioni();
+				prenotazioni=finestra.getPrenotazioni();
+				prenotazioni.addListeners(this);
+			}
 		}
 	}
 	

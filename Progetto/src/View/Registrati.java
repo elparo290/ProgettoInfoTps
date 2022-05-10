@@ -36,6 +36,7 @@ public class Registrati extends JPanel {
 	
 	JButton btnNewButton;
 	JButton btnNewButton_1;
+	JDatePickerImpl datePicker;
 	
 	public Registrati() {
 		setBackground(Color.MAGENTA);
@@ -117,7 +118,7 @@ public class Registrati extends JPanel {
 		p.put("text.month", "Mese");
 		p.put("text.year", "Anno");
 		JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
-		JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+		datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
         datePicker.setTextEditable(true);
         datePicker.setShowYearButtons(true);
 		datePicker.setBounds(14, 208, 224, 21);
@@ -128,6 +129,11 @@ public class Registrati extends JPanel {
 		btnNewButton_1.setBounds(282, 10, 158, 23);
 		add(btnNewButton_1);
 		
+	}
+	
+	public JDatePickerImpl getData()
+	{
+		return datePicker;
 	}
 	
 	public JTextField getNome()
