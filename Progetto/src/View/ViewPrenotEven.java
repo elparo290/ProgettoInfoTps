@@ -46,6 +46,7 @@ public class ViewPrenotEven extends JPanel {
 		add(lblNewLabel_1);
 		
 		textArea = new JTextArea(5, 30);
+		textArea.setEditable(false);
 		scrollPane = new JScrollPane(textArea);
 		scrollPane.setFont(new Font("Dialog", Font.ITALIC, 12));
 		scrollPane.setBackground(Color.WHITE);
