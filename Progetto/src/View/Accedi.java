@@ -32,58 +32,79 @@ public class Accedi extends JPanel {
 		
 		JLabel lblNewLabel = new JLabel("EMAIL:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel.setBounds(94, 152, 143, 13);
+		lblNewLabel.setBounds(386, 245, 159, 19);
 		add(lblNewLabel);
 		
 		textField = new JTextField();
-		textField.setBounds(161, 152, 136, 19);
+		textField.setBounds(470, 245, 185, 19);
 		add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("PASSWORD:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_1.setBounds(58, 192, 140, 13);
+		lblNewLabel_1.setBounds(344, 293, 140, 13);
 		add(lblNewLabel_1);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(161, 192, 136, 19);
+		passwordField.setBounds(470, 287, 185, 19);
 		add(passwordField);
 		
 		btnNewButton = new JButton("ACCEDI");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton.setBounds(161, 245, 85, 21);
+		btnNewButton.setBounds(429, 394, 136, 29);
 		add(btnNewButton);
 		
 		JLabel lblNewLabel_2 = new JLabel("PAROGATI DISCO");
 		lblNewLabel_2.setForeground(Color.CYAN);
-		lblNewLabel_2.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_2.setBounds(124, 63, 241, 38);
+		lblNewLabel_2.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 40));
+		lblNewLabel_2.setBounds(302, 10, 567, 71);
 		add(lblNewLabel_2);
 		
 		btnNewButton_1 = new JButton("Indietro");
 		btnNewButton_1.setBackground(Color.MAGENTA);
-		btnNewButton_1.setBounds(326, 10, 114, 19);
+		btnNewButton_1.setBounds(849, 20, 166, 29);
 		add(btnNewButton_1);
 
 	}
+	
+	/**
+	 * @return mail inserita 
+	 */
 	
 	public JTextField getMail()
 	{
 		return textField;
 	}
 	
+	/**
+	 * @return password inserita 
+	 */
+	
 	public JPasswordField getPassword()
 	{
 		return passwordField;
 	}
 	
+	/**
+	 * @return bottone accedi
+	 */
+	
 	public JButton getAccedi() {
 		return btnNewButton;
 	}
 	
+	/**
+	 * @return bottone esci
+	 */
+	
 	public JButton getEsci() {
 		return btnNewButton_1;
 	}
+	
+	/**
+	 * AddListener
+	 * @param c Classe controller
+	 */
 	
 	public void addListeners(Controller c) {
 		btnNewButton.addActionListener(c);

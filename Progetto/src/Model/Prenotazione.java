@@ -44,38 +44,78 @@ public class Prenotazione {
 		evento.setPostiRimanenti(evento.getPostiRimanenti()-this.numeroPersone);
 	}
 	
+	/**
+	 * @return Utente della prenotazione
+	 */
+	
 	public Utente getPersona() {
 		return persona;
 	}
 
+	/**
+	 * Assegna l'utente alla prenotazione
+	 * @param persona Utente
+	 */
+	
 	public void setPersona(Utente persona) {
 		this.persona = persona;
 	}
 
+	/**
+	 * @return numero di persone nella prenotazione
+	 */
+	
 	public int getNumeroPersone() {
 		return numeroPersone;
 	}
 
+	/**
+	 * Assegna numero di persone alla prenotazione
+	 * @param numeroPersone numero di persone
+	 */
+	
 	public void setNumeroPersone(int numeroPersone) {
 		this.numeroPersone = numeroPersone;
 	}
 
+	/**
+	 * @return numero della prenotazione
+	 */
+	
 	public int getNumPrenotazione() {
 		return numPrenotazione;
 	}
 
+	/**
+	 * Assegna numero di prenotazione alla prenotazione
+	 * @param numPrenotazione numPrenotazione numero della prenotazione
+	 */
+	
 	public void setNumPrenotazione(int numPrenotazione) {
 		this.numPrenotazione = numPrenotazione;
 	}
 
+	/**
+	 * @return evento inerente alla prenotazione
+	 */
+	
 	public Evento getEvento() {
 		return evento;
 	}
 
+	/**
+	 * Assegna evento alla prenotazione
+	 * @param evento Evento
+	 */
+	
 	public void setEvento(Evento evento) {
 		this.evento = evento;
 	}
 
+	/**
+	 * metodo che ritorna stringa inerente alla prenotazione
+	 */
+	
 	@Override
 	public String toString() {
 		return "Nome Utente= " + persona.getNome() + ",  numero persone= " + numeroPersone + ",  numero Prenotazione= "

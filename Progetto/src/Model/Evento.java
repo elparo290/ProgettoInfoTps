@@ -62,50 +62,99 @@ public class Evento {
 		}
 	}
 	
+	/**
+	 * @return il numero massimo di persone che possono partecipare all'evento 
+	 */
+	
 	public int getPersoneMax() {
 		return personeMax;
 	}
 
+	/**
+	 * Assegna il numero di persone che posso partecipare all'evento
+	 * @param personeMax numero di persone
+	 */
+	
 	public void setPersoneMax(int personeMax) {
 		this.personeMax = personeMax;
 	}
+	
+	/**
+	 * @return il numero di posti rimantenti all'evento 
+	 */
 	
 	public int getPostiRimanenti() {
 		return postiRimanenti;
 	}
 
+	/**
+	 * Assegna i posti rimanenti dell'evento
+	 * @param postiRimanenti numero di posti rimanenti
+	 */
+	
 	public void setPostiRimanenti(int postiRimanenti) {
 		this.postiRimanenti = postiRimanenti;
 	}
-
+	
+	/**
+	 * @return il prezzo a presone per partecipare all'evento 
+	 */
+	
 	public double getPrezzo() {
 		return prezzo;
 	}
 
+	/**
+	 * Assegna il prezzo a persona per partecipare all'evento
+	 * @param prezzo prezzo a persona dell'evento
+	 */
+	
 	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
 	}
 
+	/**
+	 * @return il nome dell'evento 
+	 */
+	
 	public String getNome() {
 		return nome;
 	}
 
+	/**
+	 * Assegna il nome all'evento
+	 * @param nome nome dell'evento
+	 */
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
+	/**
+	 * @return la date dell'evento 
+	 */
+	
 	public LocalDate getData() {
 		return data;
 	}
 
+	/**
+	 * Assegna la data all'evento
+	 * @param data data dell'evento
+	 */
+	
 	public void setData(LocalDate data) {
 		this.data = data;
 	}
 
+	/**
+	 * metodo che ritorna stringa inerente all'evento
+	 */
+	
 	@Override
 	public String toString() {
 		return "Massimo persone= " + personeMax + ",  nome evento= " + nome + ",  prezzo= " + prezzo + ",  posti rimanenti= "
-				+ postiRimanenti + ",  Numero Prenotazione= " + numPrenotazioni + ",  data evento= " + data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "\n\n";
+				+ postiRimanenti + ",  Numero Evento= " + numPrenotazioni + ",  data evento= " + data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "\n\n";
 	}
 	
 	

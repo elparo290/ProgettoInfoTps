@@ -26,26 +26,35 @@ public class Pannello extends JPanel {
 		
 		btnNewButton = new JButton("INIZIAMO");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton.setBounds(162, 194, 119, 21);
+		btnNewButton.setBounds(386, 401, 229, 77);
 		add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("BENVENUTO!!");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Papyrus", Font.BOLD | Font.ITALIC, 30));
-		lblNewLabel.setBounds(74, 26, 337, 77);
+		lblNewLabel.setBounds(345, 129, 337, 77);
 		add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("PAROGATI DISCO");
 		lblNewLabel_1.setForeground(Color.CYAN);
-		lblNewLabel_1.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_1.setBounds(94, 113, 257, 45);
+		lblNewLabel_1.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 40));
+		lblNewLabel_1.setBounds(303, 25, 569, 45);
 		add(lblNewLabel_1);
 
 	}
 
+	/**
+	 * @return bottone Inizia
+	 */
+	
 	public JButton getInizia() {
 		return btnNewButton;
 	}
+	
+	/**
+	 * AddListener
+	 * @param c Classe controller
+	 */
 	
 	public void addListeners(Controller c) {
 		btnNewButton.addActionListener(c);

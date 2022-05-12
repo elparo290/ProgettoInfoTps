@@ -59,12 +59,12 @@ public class Utente {
 	}
 
 	/**
-	 * 
-	 * @param mail
-	 * @param nome
-	 * @param cognome
-	 * @param telefono
-	 * @param password
+	 * Metodo costruttore dell'utente
+	 * @param mail mail dell'utente
+	 * @param nome nome dell'utente
+	 * @param cognome cognome dell'utente
+	 * @param telefono telefono dell'utente
+	 * @param password password dell'utente
 	 */
 	
 	public Utente(String mail,String nome,String cognome,String telefono,String password)
@@ -81,6 +81,10 @@ public class Utente {
 		}
 	}
 	
+	/**
+	 * @return mail dell'utente
+	 */
+	
 	public String getMail() {
 		return mail;
 	}
@@ -89,47 +93,96 @@ public class Utente {
 		this.mail = mail;
 	}
 
+	/**
+	 * @return nome dell'utente
+	 */
+	
 	public String getNome() {
 		return nome;
 	}
 
+	/**
+	 * Assegna nome all'utente
+	 * @param nome nome dell'utente
+	 */
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
+	/**
+	 * @return cognome dell'utente
+	 */
+	
 	public String getCognome() {
 		return cognome;
 	}
 
+	/**
+	 * Assegna cognonome all'utente
+	 * @param cognome cognome dell'utente
+	 */
+	
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
 
+	/**
+	 * @return telefono dell'utente
+	 */
+	
 	public String getTelefono() {
 		return telefono;
 	}
 
+	/**
+	 * Assegna telefono all'utente
+	 * @param telefono telefono dell'utente
+	 */
+	
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
+	/**
+	 * @return data di nascita dell'utente
+	 */
+	
 	public LocalDate getDataDiNascita() {
 		return dataDiNascita;
 	}
 
+	/**
+	 * Assegna data di nascita all'utente
+	 * @param dataDiNascita data di nascita dell'utente
+	 */
+	
 	public void setDataDiNascita(LocalDate dataDiNascita) {
 		this.dataDiNascita = dataDiNascita;
 	}
+	
+	/**
+	 * metodo che ritorna stringa inerente all'Utente
+	 */
 	
 	@Override
 	public String toString() {
 		return ""+mail+"  "+nome+"  "+cognome+"  "+telefono+"  "+dataDiNascita;
 	}
 
+	/**
+	 * @return password dell'utente
+	 */
+	
 	public String getPassword() {
 		return password;
 	}
 
+	/**
+	 * Assegna password all'utente
+	 * @param password password dell'utente
+	 */
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}

@@ -36,33 +36,46 @@ public class ViewPrenotEven extends JPanel {
 		
 		btnNewButton = new JButton("Indietro");
 		btnNewButton.setBackground(Color.MAGENTA);
-		btnNewButton.setBounds(267, 10, 173, 23);
+		btnNewButton.setBounds(847, 25, 179, 31);
 		add(btnNewButton);
 		
 		JLabel lblNewLabel_1 = new JLabel("PAROGATI DISCO");
 		lblNewLabel_1.setForeground(Color.CYAN);
-		lblNewLabel_1.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_1.setBounds(0, 10, 257, 45);
+		lblNewLabel_1.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 40));
+		lblNewLabel_1.setBounds(303, 25, 569, 45);
 		add(lblNewLabel_1);
 		
 		textArea = new JTextArea(5, 30);
-		textArea.setEditable(false);
 		scrollPane = new JScrollPane(textArea);
 		scrollPane.setFont(new Font("Dialog", Font.ITALIC, 12));
 		scrollPane.setBackground(Color.WHITE);
-		scrollPane.setBounds(10, 61, 430, 350);
+		scrollPane.setBounds(10, 71, 1050, 564);
 		add(scrollPane);
 
 	}
+	
+	/**
+	 * assegna testo alla view
+	 * @param testo testo da mostrare
+	 */
 	
 	public void setText(String testo)
 	{
 		textArea.setText(testo);
 	}
 	
+	/**
+	 * @return bottone esci
+	 */
+	
 	public JButton getEsci() {
 		return btnNewButton;
 	}
+	
+	/**
+	 * AddListener
+	 * @param c Classe controller
+	 */
 	
 	public void addListeners(Controller c) {
 		btnNewButton.addActionListener(c);

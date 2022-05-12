@@ -2,6 +2,8 @@ package Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -57,7 +59,7 @@ public class Controller implements ActionListener{
 	}
 	
 	/**
-	 * 
+	 * Metodo per gestire la classe Accedi
 	 * @param panel un'istanza del pannello Accedi
 	 * @param evtSource la sorgente dell'evento da gestire
 	 */
@@ -70,7 +72,7 @@ public class Controller implements ActionListener{
 			String mail = panel.getMail().getText();
 			String password = panel.getPassword().getText();
 			int controllo=0;
-			if(mail.equals("") || password.equals("")) {
+			if(mail.isBlank()|| password.isBlank()) {
 				JOptionPane.showMessageDialog(pn, "devi completare tutti i campi");	
 			}
 			else
@@ -131,8 +133,8 @@ public class Controller implements ActionListener{
 	}
 
 	/**
-	 * 
-	 * @param panel un'istanza del pannello Accedi
+	 * Metodo per gestire la classe Pannello
+	 * @param panel un'istanza del pannello Pannell
 	 * @param evtSource la sorgente dell'evento da gestire
 	 */
 	
@@ -147,8 +149,8 @@ public class Controller implements ActionListener{
 	}
 	
 	/**
-	 * 
-	 * @param panel un'istanza del pannello Accedi
+	 * Metodo per gestire la classe Eventi
+	 * @param panel un'istanza del pannello Eventi
 	 * @param evtSource la sorgente dell'evento da gestire
 	 */
 	
@@ -193,8 +195,8 @@ public class Controller implements ActionListener{
 	}
 	
 	/**
-	 * 
-	 * @param panel un'istanza del pannello Accedi
+	 * Metodo per gestire la classe CreaEvento
+	 * @param panel un'istanza del pannello CreaEvento
 	 * @param evtSource la sorgente dell'evento da gestire
 	 */
 	
@@ -204,7 +206,7 @@ public class Controller implements ActionListener{
 		{	
 			int x = (Integer) panel.getPrezzo().getValue();
 			double y = 0+x;
-			if((int) panel.getPersoneMax().getValue()==0 || y==0 || panel.getNomeEvento().getText().equals(""))
+			if((int) panel.getPersoneMax().getValue()==0 || y==0 || panel.getNomeEvento().getText().isBlank() || panel.getData().getJFormattedTextField().getText().isBlank())
 			{
 				JOptionPane.showMessageDialog(pn, "devi completare tutti i campi");	
 			}
@@ -212,9 +214,16 @@ public class Controller implements ActionListener{
 			{
 				JOptionPane.showMessageDialog(pn, "le persone o il prezzo devono essere maggiori di 0");
 			}
-			else if(panel.getNomeEvento().getText().equals(""))
+			else if(panel.getNomeEvento().getText().isBlank())
 			{
 				JOptionPane.showMessageDialog(pn, "assegna un nome all'evento");
+			}
+			else if(panel.getData().getModel().getYear()<=LocalDate.now().getYear() && 
+					panel.getData().getModel().getMonth()+1<=LocalDate.now().getMonthValue() && 
+					panel.getData().getModel().getDay()<LocalDate.now().getDayOfMonth()
+					)
+			{
+				JOptionPane.showMessageDialog(pn, "Non puoi creare un evento nel passato");
 			}
 			else
 			{
@@ -238,8 +247,8 @@ public class Controller implements ActionListener{
 	}
 	
 	/**
-	 * 
-	 * @param panel un'istanza del pannello Accedi
+	 * Metodo per gestire la classe Home
+	 * @param panel un'istanza del pannello Home
 	 * @param evtSource la sorgente dell'evento da gestire
 	 */
 	
@@ -260,8 +269,8 @@ public class Controller implements ActionListener{
 	}
 	
 	/**
-	 * 
-	 * @param panel un'istanza del pannello Accedi
+	 * Metodo per gestire la classe Prenotazioni
+	 * @param panel un'istanza del pannello Prenotazioni
 	 * @param evtSource la sorgente dell'evento da gestire
 	 */
 	
@@ -333,13 +342,14 @@ public class Controller implements ActionListener{
 	}
 	
 	/**
-	 * 
-	 * @param stringa
-	 * @return
+	 * Metodo per verificare se la stringa è un numeri di telefono.
+	 * @param numero di telefono da verificare
+	 * @return vero se è un numero di telefono, falso se non corrisponde ad un numero di telefono
 	 */
 
 	private boolean isTelefono(String stringa)
 	{
+		if(stringa.length()!=10) return false;
 		for(int i=0;i<stringa.length();i++)
 		{
 			if(stringa.charAt(i)<48 || stringa.charAt(i)>57)
@@ -351,9 +361,9 @@ public class Controller implements ActionListener{
 	}
 	
 	/**
-	 * 
-	 * @param stringa
-	 * @return
+	 * Metodo per verificare se la stringa è una mail.
+	 * @param mail da verificare
+	 * @return vero se è una mail, falso se non corrisponde ad una mail
 	 */
 	
 	private boolean isMail(String stringa)
@@ -375,7 +385,8 @@ public class Controller implements ActionListener{
 	}
 	
 	/**
-	 * @param panel un'istanza del pannello Accedi
+	 * Metodo per gestire la classe Registrati
+	 * @param panel un'istanza del pannello Registrati
 	 * @param evtSource la sorgente dell'evento da gestire
 	 */
 
@@ -387,17 +398,27 @@ public class Controller implements ActionListener{
 		}
 		else if(evtSource == panel.getInvia())
 		{
-			if(panel.getMail().getText().equals("") || panel.getNome().getText().equals("") || panel.getCognome().getText().equals("") || panel.getTelefono().getText().equals("") || panel.getPassword().getText().equals(""))
+			if(panel.getMail().getText().isBlank() || panel.getNome().getText().isBlank() || 
+					panel.getCognome().getText().isBlank() || panel.getTelefono().getText().isBlank() || panel.getPassword().getText().isBlank() 
+					|| panel.getData().getJFormattedTextField().getText().isBlank()
+					)
 			{
 				JOptionPane.showMessageDialog(pn, "devi completare tutti i campi");	
 			}
-			else if(panel.getTelefono().getText().length()!=10 || !isTelefono(panel.getTelefono().getText()))
+			else if(!isTelefono(panel.getTelefono().getText()))
 			{
 				JOptionPane.showMessageDialog(pn, "numero di telefono non valido");	
 			}
 			else if(!isMail(panel.getMail().getText()))
 			{
 				JOptionPane.showMessageDialog(pn, "mail non valida");	
+			}
+			else if(panel.getData().getModel().getYear()>=LocalDate.now().getYear()-18 && 
+					panel.getData().getModel().getMonth()+1>=LocalDate.now().getMonthValue() && 
+					panel.getData().getModel().getDay()>LocalDate.now().getDayOfMonth()
+					)
+			{
+				JOptionPane.showMessageDialog(pn, "L'utente deve essere maggiorenne");	
 			}
 			else
 			{
@@ -441,8 +462,8 @@ public class Controller implements ActionListener{
 	}
 	
 	/**
-	 * 
-	 * @param panel un'istanza del pannello Accedi
+	 * Metodo per gestire la classe Scelta
+	 * @param panel un'istanza del pannello Scelta
 	 * @param evtSource la sorgente dell'evento da gestire
 	 */
 	
@@ -469,8 +490,8 @@ public class Controller implements ActionListener{
 	}
 	
 	/**
-	 * 
-	 * @param panel un'istanza del pannello Accedi
+	 * Metodo per gestire la classe ViewPrenotEveno
+	 * @param panel un'istanza del pannello ViewPrenotEven
 	 * @param evtSource la sorgente dell'evento da gestire
 	 */
 	
@@ -494,8 +515,8 @@ public class Controller implements ActionListener{
 	}
 	
 	/**
-	 * 
-	 * @param panel un'istanza del pannello Accedi
+	 * Metodo per gestire la classe CreaPrenotazione
+	 * @param panel un'istanza del pannello CreaPrenotazione
 	 * @param evtSource la sorgente dell'evento da gestire
 	 */
 	
@@ -545,8 +566,8 @@ public class Controller implements ActionListener{
 	}
 	
 	/**
-	 * 
-	 * @param e 
+	 * Metodo che gestisce le classi view e interagisce con il package model
+	 * @param e Action event
 	 */
 	
 	@Override
