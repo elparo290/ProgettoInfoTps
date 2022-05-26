@@ -13,6 +13,7 @@ public class Main {
 	 * metodo che istanzia view e model nel controller
 	 * @param args argomento prestabilito del metodo main
 	 */
+	
 	public static void main(String[] args) {
 		Finestra frame = new Finestra();
 		Model md = new Model();
